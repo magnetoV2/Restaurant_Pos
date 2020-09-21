@@ -1,0 +1,18 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.BillGenerate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+       xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BillGenerate">
+
+    <Grid>
+        <local:Header_Menu Margin="-30,0,-540,0" />
+
+        <Viewer:CrystalReportsViewer Name="RvKot" HorizontalAlignment="Left" Height="680" Margin="10,40,0,0" VerticalAlignment="Top" Width="1410"/>
+    </Grid>
+</Page>

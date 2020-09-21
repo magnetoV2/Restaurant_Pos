@@ -1,0 +1,415 @@
+Create Session Request:
+{
+  "SyncedTime": 0,
+  "remindMe": "N",
+  "showImage": "N",
+  "warehouseId": 1000035,
+  "macAddress": "E4:5D:75:30:4E:C1",
+  "businessPartnerId": 1012582,
+  "password": "4545",
+  "clientId": 1000023,
+  "version": "3.3",
+  "appName": "POS",
+  "orgId": 1000032,
+  "operation": "createSession",
+  "username": "saran123",
+  "sessionId": 0,
+  "userId": 1005806,
+  "roleId": 1000240
+}
+
+Create Session Response:
+{"responseCode":"200","sessionId":1017268}
+
+
+Resume Session Request:
+{
+  "SyncedTime": 0,
+  "remindMe": "N",
+  "showImage": "N",
+  "warehouseId": 1000035,
+  "macAddress": "E4:5D:75:30:4E:C1",
+  "businessPartnerId": 1012582,
+  "password": "4545",
+  "clientId": 1000023,
+  "version": "3.3",
+  "appName": "POS",
+  "orgId": 1000032,
+  "operation": "resumeSession",
+  "username": "saran123",
+  "sessionId": 1017268,
+  "userId": 1005806,
+  "roleId": 1000240
+}
+
+Resume Session Response:
+{"responseCode":"200","sessionId":1017268}
+
+Close Session Request:
+{
+  "operation": "GetSalesSummary",
+  "username": "saran123",
+  "password": "4545",
+  "clientId": 1000023,
+  "orgId": 1000032,
+  "userId": 1005806,
+  "roleId": 1000240,
+  "sessionId": 1017268,
+  "businessPartnerId": 1012582,
+  "warehouseId": 1000035,
+  "startTime": 1556173354783,
+  "endTime": 1556174185201,
+  "SyncedTime": 0,
+  "remindMe": "N",
+  "showImage": "N",
+  "macAddress": "E4:5D:75:30:4E:C1",
+  "version": "3.3",
+  "appName": "POS",
+  
+  "cashbookId": 1000144,
+  
+  
+  "Denominations": [
+    {
+      "total": 75000,
+      "count": 150,
+      "type": "riyal",
+      "name": 500
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "riyal",
+      "name": 100
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "riyal",
+      "name": 50
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "riyal",
+      "name": 10
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "riyal",
+      "name": 5
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "riyal",
+      "name": 1
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "dirhams",
+      "name": 50
+    },
+    {
+      "total": 0,
+      "count": 0,
+      "type": "dirhams",
+      "name": 25
+    },
+    {
+      "total": 0,
+      "count": 1,
+      "type": "complement",
+      "name": 1
+    },
+    {
+      "total": 77000,
+      "count": 0,
+      "type": "total",
+      "name": 0
+    }
+  ]
+}
+
+Close Session Response:
+{
+  "salesSummaryDetails": [
+    {
+      "lineTotal": 6545.59,
+      "summaryName": "Total Sales",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0,
+      "summaryName": "Discount",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 2200,
+      "summaryName": "Accountable Cash",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0,
+      "summaryName": "Accountable Credit",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 1385,
+      "summaryName": "Complementary",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0,
+      "summaryName": "Accountable Exchange",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0,
+      "summaryName": "Accountable Redeem",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0.59,
+      "summaryName": "Settlement Discount",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 2960,
+      "summaryName": "Credit/Debit Card",
+      "linePrice": 0,
+      "summaryTitle": "Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 2200,
+      "summaryName": "Accountable Cash",
+      "linePrice": 0,
+      "summaryTitle": "Cash Customer_Summary_",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 2960,
+      "summaryName": "Credit\/Debit Card",
+      "linePrice": 0,
+      "summaryTitle": "Cash Customer_Summary_",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 0.59,
+      "summaryName": "Settlement Discount",
+      "linePrice": 0,
+      "summaryTitle": "Cash Customer_Summary_",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 1385,
+      "summaryName": "Complementary",
+      "linePrice": 0,
+      "summaryTitle": "Cash Customer_Summary_",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 6545.59,
+      "summaryName": "All",
+      "linePrice": 0,
+      "summaryTitle": "Category Summary",
+      "lineQty": 0
+    },
+    {
+      "lineTotal": 450.15,
+      "summaryName": " Model 3-5",
+      "linePrice": 450.15,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 1400,
+      "summaryName": "AMORINO - GOLD NO. 1 FEEL ME EDP 50ML",
+      "linePrice": 1400,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 465,
+      "summaryName": "Acqua di Monaco EDP 100ml",
+      "linePrice": 465,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 1450,
+      "summaryName": "AMORINO - GOLD NO. 6 MORE THAN LOVE EDP 50ML",
+      "linePrice": 1450,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 450.24,
+      "summaryName": " Model 4-1",
+      "linePrice": 450.24,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 495,
+      "summaryName": "Acqua di Classica di Napoli Oud EDP 100ml",
+      "linePrice": 495,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 1385,
+      "summaryName": "BOND NO. 9 HIGH LINE 100ML",
+      "linePrice": 1385,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    },
+    {
+      "lineTotal": 450.2,
+      "summaryName": " Model 4-2",
+      "linePrice": 450.2,
+      "summaryTitle": "Item Summary",
+      "lineQty": 1
+    }
+  ],
+  "sessionId": 0,
+  "responseCode": "200"
+}
+
+{
+  "responseCode": "200",
+  "salesSummaryDetails": [
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Total Sales",
+        "lineQty": 0,
+        "linePrice": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Discount",
+        "lineQty": 0,
+        "linePrice": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Accountable Cash",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Accountable Credit",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Complementary",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Accountable Exchange",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Accountable Redeem",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Settlement Discount",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Summary",
+        "summaryName": "Credit/Debit Card",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 0
+     },
+     {
+        "summaryTitle": "Category Summary",
+        "summaryName": "All",
+        "lineQty": 0,
+        "linePrice": 0,
+        "lineTotal": 109
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Rocka Salad",
+        "lineQty": 2,
+        "linePrice": 10,
+        "lineTotal": 20
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Green salad",
+        "lineQty": 2,
+        "linePrice": 10,
+        "lineTotal": 20
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Mix_20",
+        "lineQty": 1,
+        "linePrice": 20,
+        "lineTotal": 20
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Fattoush",
+        "lineQty": 1,
+        "linePrice": 12,
+        "lineTotal": 12
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Tabula",
+        "lineQty": 1,
+        "linePrice": 12,
+        "lineTotal": 12
+     },
+     {
+        "summaryTitle": "Item Summary",
+        "summaryName": "Shrimp salad",
+        "lineQty": 1,
+        "linePrice": 25,
+        "lineTotal": 25
+     }
+  ],
+  "sessionId": 0
+}
+
+

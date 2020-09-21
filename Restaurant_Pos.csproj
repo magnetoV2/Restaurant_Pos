@@ -1,0 +1,1091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props" Condition="Exists('packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props')" />
+  <Import Project="..\packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0570A79D-6E46-4429-B7E9-F40CE310942E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Restaurant_Pos</RootNamespace>
+    <AssemblyName>Restaurant_Pos</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://www.zearo.qa/windows_retailpos/publish/</InstallUrl>
+    <UpdateUrl>https://www.zearo.qa/windows_retailpos/publish/</UpdateUrl>
+    <SupportUrl>https://www.zearo.qa/</SupportUrl>
+    <ErrorReportUrl>https://www.zearo.qa/</ErrorReportUrl>
+    <ProductName>Zearo Retail</ProductName>
+    <PublisherName>Zearo</PublisherName>
+    <SuiteName>Zearo</SuiteName>
+    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>https://1drv.ms/u/s!Ao0HX7JJ140sr7Vf-YwTQZacGHvslA</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Images\Icons\Zearo\lock.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Restaurant_Pos.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.AxShockwaveFlashObjects.13.0.4000\lib\net40\AxShockwaveFlashObjects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.Engine.13.0.3501\lib\net20\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.ClientDoc.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.CommLayer.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.CommonControls.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.Controllers.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.DataDefModel.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.Prompting.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportSource.13.0.3501\lib\net20\CrystalDecisions.ReportSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.Shared.13.0.3501\lib\net20\CrystalDecisions.Shared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalDecisions.Web.1.0.1\lib\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalDecisions.Windows.Forms.1.0.0\lib\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotVVM.Contrib, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotVVM.Contrib.CrystalReportViewer.2.3.2\lib\net451\DotVVM.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="DotVVM.Core, Version=2.3.1.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>packages\DotVVM.Core.2.3.1\lib\net451\DotVVM.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotVVM.Framework, Version=2.3.1.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>packages\DotVVM.2.3.1\lib\net451\DotVVM.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\FlashControlV71.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>packages\HarfBuzzSharp.2.6.1.7\lib\net462\HarfBuzzSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.10\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.1.6.5\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.1.0.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.1.0.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSparkle.Net40, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetSparkle.1.1.0\lib\net40-full\NetSparkle.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>packages\Npgsql.3.2.7\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=2.5.14.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>packages\PropertyChanged.Fody.2.5.14\lib\net452\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.WPF.Viewer.13.0.3501\lib\net20\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.WPF.ViewerShared.13.0.3501\lib\net20\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>packages\SkiaSharp.1.60.3\lib\net45\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=2.0.0.11, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.2.0.0.11\lib\net40\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\ControlzEx.3.0.2.4\lib\net462\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ToastNotifications, Version=2.5.0.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>packages\ToastNotifications.2.5.0\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.5.0.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>packages\ToastNotifications.Messages.2.5.0\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ApplicationDefinition>
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="Barcode\Barcode.cs" />
+    <Compile Include="Barcode\Code39.cs" />
+    <Compile Include="CRBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRKot.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRKot.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRPreBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRPreBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReportViewerPage.aspx.cs">
+      <DependentUpon>CrystalReportViewerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrystalReportViewerPage.aspx.designer.cs" />
+    <Compile Include="DB\PostgreSQL.cs" />
+    <Compile Include="LocalReportExtensions.cs" />
+    <Compile Include="Mail\ErrorMail.cs" />
+    <Compile Include="MyCustomDateProvider.cs" />
+    <Compile Include="Pages\AddCustomers.xaml.cs">
+      <DependentUpon>AddCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddProduct.xaml.cs">
+      <DependentUpon>AddProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddProductCAT.xaml.cs">
+      <DependentUpon>AddProductCAT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddTable.xaml.cs">
+      <DependentUpon>AddTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddTerminals.xaml.cs">
+      <DependentUpon>AddTerminals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BillGenerate.xaml.cs">
+      <DependentUpon>BillGenerate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\customer_credit_pay.xaml.cs">
+      <DependentUpon>customer_credit_pay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DineIn.xaml.cs">
+      <DependentUpon>DineIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\KotGenerate.xaml.cs">
+      <DependentUpon>KotGenerate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Logout.xaml.cs">
+      <DependentUpon>Logout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\orderonline.xaml.cs">
+      <DependentUpon>orderonline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\POSsystem.xaml.cs">
+      <DependentUpon>POSsystem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PreBillGenerate.xaml.cs">
+      <DependentUpon>PreBillGenerate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReprintKOT.xaml.cs">
+      <DependentUpon>ReprintKOT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReprintOrders .xaml.cs">
+      <DependentUpon>ReprintOrders .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\subscription.xaml.cs">
+      <DependentUpon>subscription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\Header Menu.xaml.cs">
+      <DependentUpon>Header Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\PosHeaderMenu.xaml.cs">
+      <DependentUpon>PosHeaderMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Vendor_credit_pay.xaml.cs">
+      <DependentUpon>Vendor_credit_pay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewCustomers.xaml.cs">
+      <DependentUpon>ViewCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewOrder.xaml.cs">
+      <DependentUpon>ViewOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewProduct.xaml.cs">
+      <DependentUpon>ViewProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewProductCAT.xaml.cs">
+      <DependentUpon>ViewProductCAT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServerConfig.xaml.cs">
+      <DependentUpon>ServerConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddUser.xaml.cs">
+      <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewTable.xaml.cs">
+      <DependentUpon>ViewTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewTerminals.xaml.cs">
+      <DependentUpon>ViewTerminals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewUser.xaml.cs">
+      <DependentUpon>ViewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Styles\_Colors.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ValueConverters\ApplicationpageValueConverter.cs" />
+    <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ValueConverters\BooleanToVisiblityConverter.cs" />
+    <Compile Include="ViewModels\Application\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Base\RelayCommand.cs" />
+    <Compile Include="ViewModels\NotifierViewModel.cs" />
+    <Compile Include="ViewModels\Page\ArrayList.cs" />
+    <Compile Include="ViewModels\Page\cartOrders.cs" />
+    <Compile Include="ViewModels\Page\ComboBox\UICombobox.cs" />
+    <Compile Include="ViewModels\Page\ComboBox\WarehouseLoginComboBox.cs" />
+    <Compile Include="ViewModels\Page\invoive_No.cs" />
+    <Compile Include="ViewModels\Page\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Page\SerialPort.cs" />
+    <Compile Include="ViewModels\Page\RetailViewModel.cs" />
+    <Compile Include="ViewModels\Page\TextSearchFilter.cs" />
+    <Compile Include="WPFViewModels\WindowViewModel.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\AddCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddProductCAT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AddTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddTerminals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BillGenerate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\customer_credit_pay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DineIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\KotGenerate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Logout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\orderonline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\POSsystem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PreBillGenerate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReprintKOT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReprintOrders .xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\subscription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserControls\Header Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserControls\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\UserControls\PosHeaderMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Vendor_credit_pay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewProductCAT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServerConfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewTerminals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Scroll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Texts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Resource Include="CRBill.xml" />
+    <Resource Include="Kot.xml" />
+    <Resource Include="PreBillGenerate.xml" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Resource Include="Resources\Images\Icons\Zearo\qsale_logo.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\qsale_logo.ico" />
+    <Resource Include="Resources\Images\Icons\Zearo\login_icon1.png" />
+    <Resource Include="Resources\Images\Icons\lock.png" />
+    <Resource Include="lock.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\lock.ico" />
+    <Resource Include="Resources\Images\Icons\Zearo\lock.png" />
+    <Resource Include="Resources\Images\ProductCAT\Capture.PNG" />
+    <Resource Include="Resources\Images\ProductImg\lock.png" />
+    <Resource Include="Resources\Images\ProductCAT\lock.png" />
+    <Resource Include="Resources\Images\Icons\left-arrow.png" />
+    <Resource Include="Resources\Images\Icons\edit.png" />
+    <Resource Include="Resources\Images\Icons\plus.png" />
+    <Resource Include="Resources\Images\Icons\menubar.png" />
+    <Resource Include="Resources\Images\menubar.png" />
+    <Resource Include="Resources\Images\Icons\add-user.png" />
+    <Resource Include="Resources\Images\Icons\addeditcategory.png" />
+    <Resource Include="Resources\Images\Icons\addproduct.png" />
+    <Resource Include="Resources\Images\Icons\addtabel.png" />
+    <Resource Include="Resources\Images\Icons\card.png" />
+    <Resource Include="Resources\Images\Icons\menual.png" />
+    <Resource Include="Resources\Images\Icons\Re-print.png" />
+    <Resource Include="Resources\Images\Icons\terminal.png" />
+    <Resource Include="Resources\Images\Icons\view-order.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\Menuchart.png" />
+    <Resource Include="Resources\Images\Icons\logout.png" />
+    <Resource Include="Resources\Images\Icons\suscribe-info.png" />
+    <Resource Include="Resources\Images\Icons\table.png" />
+    <Resource Include="Resources\Images\Icons\pos.png" />
+    <Resource Include="Resources\Images\Icons\credit-card.png" />
+    <Resource Include="Resources\Images\Icons\bike.png" />
+    <Resource Include="Resources\Images\Icons\cricle.png" />
+    <Resource Include="Resources\Images\Icons\home.png" />
+    <Resource Include="Resources\Images\Icons\window.png" />
+    <Resource Include="Resources\Images\Icons\key.png" />
+    <Resource Include="Resources\Images\Icons\split.png" />
+    <Resource Include="Resources\Images\Icons\merge.png" />
+    <Resource Include="Resources\Images\Icons\unlock.png" />
+    <Resource Include="Resources\Images\Icons\searchWhite.png" />
+    <Resource Include="Resources\Images\Icons\close.png" />
+    <Resource Include="Resources\Images\Icons\right.png" />
+    <Resource Include="Resources\Images\Icons\cancel.png" />
+    <Resource Include="Resources\Images\Icons\print.png" />
+    <Resource Include="Resources\Images\Icons\boost.png" />
+    <Resource Include="Resources\Images\Icons\Product.png" />
+    <Resource Include="Resources\Images\Icons\Produ.png" />
+    <Content Include="CrystalReportViewerPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DB\Migration\db_refresh.sql" />
+    <Content Include="DB\Migration\Main\1_migration_table_script_postgresql.sql" />
+    <Content Include="DB\Migration\Main\2_migration_functions_script_postgresql.sql" />
+    <Content Include="DB\Migration\Main\3_migration_table_insert_script_postgresql.sql" />
+    <Content Include="DB\Migration\Main\zearo-retail-db.sql" />
+    <Content Include="DB\Migration\Other\ad_sequence.sql" />
+    <Content Include="DB\Migration\Other\alter_15Feb2019.sql" />
+    <Content Include="DB\Migration\Other\db_refresh.sql" />
+    <Content Include="DB\Migration\Other\migration_db_role_creation_script_postgresql.sql" />
+    <Content Include="DB\Migration\Other\Queries.sql" />
+    <Resource Include="DB\Migration\Other\SessionAPIs.txt" />
+    <Content Include="DB\Migration\zearo-retail-db.sql" />
+    <Content Include="DB\pos_Backup_25_06_2020.sql" />
+    <Resource Include="Resources\Images\Icons\back.png" />
+    <Resource Include="Resources\Images\CustomersImg\Cap.PNG" />
+    <Resource Include="Resources\Images\UsersImg\add-user.png" />
+    <Resource Include="Resources\Images\UsersImg\card.png" />
+    <Resource Include="Resources\Images\UsersImg\back.png" />
+    <Resource Include="Resources\Images\UsersImg\Cap.PNG" />
+    <Resource Include="Resources\Images\CustomersImg\add-user.png" />
+    <Resource Include="Resources\Images\ProductImg\juice-img.jpg" />
+    <Resource Include="Resources\Images\ProductCAT\Produ.png" />
+    <Resource Include="Resources\Images\UIFaces\adult-attractive-beautiful-415829.jpg" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %281%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %282%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %283%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %284%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %285%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow %286%29.png" />
+    <Resource Include="Resources\Images\Icons\winBlue-leftArrow\winBlue-left-arrow.png" />
+    <EmbeddedResource Include="CRBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRBill.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRKot.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRKot.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRPreBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRPreBill.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Fakes Include="Fakes\Mono.Cecil.fakes" />
+    <None Include="DB\Migration\Other\SessionAPIs.json" />
+    <None Include="Logs\Error Logs.docx" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Fonts\ooredoo\ooredoo-Bold.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\Ooredoo-Heavy.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\ooredoo-light.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\ooredoo-Regular.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\OoredooArabic-Bold.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\OoredooArabic-Heavy.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\OoredooArabic-Light.ttf" />
+    <Resource Include="Resources\Fonts\ooredoo\OoredooArabic-Regular.ttf" />
+    <Resource Include="Resources\Fonts\FontAwesome\Font Awesome 5 Brands-Regular-400.otf" />
+    <Resource Include="Resources\Fonts\FontAwesome\Font Awesome 5 Free-Regular-400.otf" />
+    <Resource Include="Resources\Fonts\FontAwesome\Font Awesome 5 Free-Solid-900.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-Bold.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-BoldItalic.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-Book.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-BookItalic.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-Light.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-LightItalic.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-Medium.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRounded-MediumItalic.otf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRoundedBold_21016.ttf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRoundedBook_21018.ttf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRoundedLight_21020.ttf" />
+    <Resource Include="Resources\Fonts\GothamRounded\GothamRoundedMedium_21022.ttf" />
+    <Resource Include="Resources\Fonts\Barcode\fre3of9x.ttf" />
+    <Resource Include="Resources\Fonts\Barcode\IDAutomationHC39M.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-Bold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-ExtraBold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-ExtraBoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-Italic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-Light.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-Regular.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-Semibold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans\OpenSans-SemiboldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\fontawesome-webfont.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Black.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Hairline.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-HairlineItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Heavy.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-HeavyItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Light.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Semibold.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-SemiboldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Lato\Lato-ThinItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\LoginBg\logobg 1080.png" />
+    <Resource Include="Resources\Images\LoginBg\logobg 240.png" />
+    <Resource Include="Resources\Images\LoginBg\logobg 360.png" />
+    <Resource Include="Resources\Images\LoginBg\logobg 480.png" />
+    <Resource Include="Resources\Images\LoginBg\logobg 720.png" />
+    <Resource Include="Resources\Images\Icons\chat.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %281%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %282%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %283%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %284%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %285%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow %286%29.png" />
+    <Resource Include="Resources\Images\Icons\black arrow left\black left-arrow.png" />
+    <Resource Include="Resources\Fonts\OpenSans\LICENSE.txt" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %281%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %282%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %283%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %284%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %285%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode %286%29.png" />
+    <Resource Include="Resources\Images\Icons\barcode\barcode.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %281%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %282%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %283%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %284%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %285%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock %286%29.png" />
+    <Resource Include="Resources\Images\Icons\bclock\bclock.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock %281%29.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock %282%29.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock %283%29.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock %284%29.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock %285%29.png" />
+    <Resource Include="Resources\Images\Icons\lclock\clock.png" />
+    <Content Include="Resources\Images\Icons\left-arrow.svg" />
+    <Resource Include="Resources\Images\Icons\phone.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %281%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %282%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %283%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %284%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %285%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer %286%29.png" />
+    <Resource Include="Resources\Images\Icons\printer\printer.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-01.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-02.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-03.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-04.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-05.png" />
+    <Resource Include="Resources\Images\Icons\scan invoice\scan invoice-06.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %281%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %282%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %283%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %284%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %285%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user %286%29.png" />
+    <Resource Include="Resources\Images\Icons\newUser\new-user.png" />
+    <Content Include="Resources\Images\Icons\trash-can.svg" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\bill.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\cancel-button %281%29.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\cancel-button %282%29.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\cancel-button.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\if_dot-more-menu-hide_2205199.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\magnifying-glass.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\success.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\user-silhouette %281%29.png" />
+    <Resource Include="Resources\Images\Icons\08Oct2018\user-silhouette.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\backspace 16x16.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\backspace 32x32.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\c 16x16.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\c 32x32.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\enter-arrow 16 x 16.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\enter-arrow 32x32.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\left-arrow 16x16.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\left-arrow 32x32.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\logo 16x16.png" />
+    <Resource Include="Resources\Images\Icons\17Oct2018\logo 32x32.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %281%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %282%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %283%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %284%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %285%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel %286%29.png" />
+    <Resource Include="Resources\Images\Icons\cancel\cancel.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %281%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %282%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %283%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %284%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %285%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button %286%29.png" />
+    <Resource Include="Resources\Images\Icons\correct\check-mark-button.png" />
+    <Resource Include="Resources\Images\Icons\enter.png" />
+    <Resource Include="Resources\Images\Icons\erase.png" />
+    <Resource Include="Resources\Images\Icons\exit.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %284%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %285%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice %286%29.png" />
+    <Resource Include="Resources\Images\Icons\Invoice\invoice.png" />
+    <Resource Include="Resources\Images\Icons\Left-Arrow\left-arrow %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Left-Arrow\left-arrow %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Left-Arrow\left-arrow %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Left-Arrow\left-arrow %284%29.png" />
+    <Resource Include="Resources\Images\Icons\Left-Arrow\left-arrow.png" />
+    <Resource Include="Resources\Images\Icons\Payments\credit-card %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\credit-card %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\credit-card %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\credit-card.png" />
+    <Resource Include="Resources\Images\Icons\Payments\gift-card %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\gift-card %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\gift-card %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\gift-card.png" />
+    <Resource Include="Resources\Images\Icons\Payments\giftbox %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\giftbox %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\giftbox %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\giftbox.png" />
+    <Resource Include="Resources\Images\Icons\Payments\notes %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\notes %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\notes %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\notes.png" />
+    <Resource Include="Resources\Images\Icons\Payments\shuffle %281%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\shuffle %282%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\shuffle %283%29.png" />
+    <Resource Include="Resources\Images\Icons\Payments\shuffle.png" />
+    <Resource Include="Resources\Images\Icons\search.png" />
+    <Resource Include="Resources\Images\Icons\setting.png" />
+    <Resource Include="Resources\Images\Icons\User\man-user %281%29.png" />
+    <Resource Include="Resources\Images\Icons\User\man-user.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %281%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %282%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %283%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %284%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %285%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette %286%29.png" />
+    <Resource Include="Resources\Images\Icons\User\user-silhouette.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\logo 16x16.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\logo 32x32.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\zearo-red.png" />
+    <Resource Include="Resources\Images\Icons\Zearo\zearo-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\HarfBuzzSharp.1.4.6.1\build\net45\HarfBuzzSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HarfBuzzSharp.1.4.6.1\build\net45\HarfBuzzSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Fody.4.2.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.4.2.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\Fody.4.2.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.4.2.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\PropertyChanged.Fody.2.5.14\build\PropertyChanged.Fody.props'))" />
+    <Error Condition="!Exists('packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets'))" />
+    <Error Condition="!Exists('packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets'))" />
+  </Target>
+  <Import Project="..\packages\HarfBuzzSharp.1.4.6.1\build\net45\HarfBuzzSharp.targets" Condition="Exists('..\packages\HarfBuzzSharp.1.4.6.1\build\net45\HarfBuzzSharp.targets')" />
+  <Import Project="..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />
+  <Import Project="packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('packages\Fody.4.2.1\build\Fody.targets')" />
+  <Import Project="packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets" Condition="Exists('packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets')" />
+  <Import Project="packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets" Condition="Exists('packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets')" />
+</Project>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="Restaurant_Pos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant_Pos"
+         xmlns:uc="clr-namespace:Restaurant_Pos.Pages.UserControls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Restaurant" Height="200" Width="250" Icon="Resources/Images/Icons/Zearo/login_icon1.png"  WindowState="Maximized">
+    <Grid Margin="0,30,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationpageValueConverter}}" NavigationUIVisibility="Hidden" Margin="0,0,0,0" />
+
+        <!--<uc:Header_Menu ></uc:Header_Menu>-->
+
+        <!-- Popup Window-->
+
+
+        <!--<Popup Name="MenuPopup"
+                 Placement="Center"
+                   HorizontalAlignment="Right"s
+                   VerticalAlignment="Top"
+                   Height="Auto" 
+                   VerticalOffset="-10"
+               HorizontalOffset="500"
+                   AllowsTransparency="True">
+            <uc:Menu x:Name="ucMenu" HorizontalAlignment="Right" VerticalAlignment="Top"   Width="400" Height="649"   />
+
+        </Popup>-->
+
+    </Grid>
+
+
+</Window>

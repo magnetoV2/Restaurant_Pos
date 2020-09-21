@@ -1,0 +1,152 @@
+﻿<Page x:Name="Login_Page" x:Class="Restaurant_Pos.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages"
+      xmlns:local1="clr-namespace:Restaurant_Pos"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="LoginPage" FontFamily="{StaticResource ooredoo-Regular}">
+    <Page.Background>
+        <ImageBrush ImageSource="C:/pos/component/Resources/Images/LoginBg/logobg 1080.png" Stretch="None" TileMode="None" />
+    </Page.Background>
+
+    <Grid HorizontalAlignment="Stretch" x:Name="login_grid">
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Width="400" Height="400" x:Name="Login_content" Visibility="Visible">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-45,0,-10,0" Width="455" Height="150">
+                <Image Source="C:/pos/component/Resources/Images/Icons/Zearo/login_icon1.png"
+                       Width="465" Height="Auto" Margin="5,5,0,5"
+                       HorizontalAlignment="Center" RenderTransformOrigin="0.577,0.5" />
+                <!--<Image Width="370"/>-->
+                <!--<TextBlock   Style="{StaticResource Regular_textblock}"
+                Text="Q"
+                         FontFamily="{StaticResource Ooredoo-Heavy}"
+                         FontSize="50"
+                             FontWeight="Bold"
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Height="56" />
+                <TextBlock   Style="{StaticResource Regular_textblock}"
+                Text="Sale"
+                         FontFamily="{StaticResource Ooredoo-Heavy}"
+                         FontSize="50"
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Height="56" />-->
+            </StackPanel>
+
+            <TextBox
+               
+                FontSize="16"
+            Tag="User Name/Email"
+            Style="{StaticResource Regular_TextBoxLogin}"
+           HorizontalAlignment="Center"
+                x:Name="Login_Email"  Margin="0,30,0,0" Width="400"
+               ></TextBox>
+
+            <PasswordBox Focusable="True" 
+                FontSize="16"
+                Style="{StaticResource Regular_PasswordBox}"
+                Tag="Password"
+                FontFamily="{StaticResource ooredoo-Regular}"
+                x:Name="Login_Password"
+                KeyDown="Login_Password_KeyDown"
+                        HorizontalContentAlignment="Center"
+                BorderThickness="1"
+                          HorizontalAlignment="Center"
+                Margin="0,10,0,0" Padding="7" Height="45" Width="400" />
+
+            <!--<ComboBox x:Name="Warehouse_DropDown"
+                        materialDesign:HintAssist.Hint="Warehouse"
+
+                     materialDesign:HintAssist.HintOpacity="100"
+                      FontSize="50"
+                      BorderThickness="1"
+                      Style="{StaticResource BaseStyle}"
+                      ItemsSource="{Binding Path=m_warehouse_items}"
+                      FontFamily="{StaticResource ooredoo-Regular}"
+                      SelectedValue="M_warehouse_id"
+                      DisplayMemberPath="WarehouseName"
+                      Margin="0,10,0,0"
+                      Padding="5"
+                      Foreground="Black"
+                      SelectionChanged="ComboBox_SelectionChanged"
+                      Visibility="Visible" Height="Auto">
+            </ComboBox>-->
+
+            <Border x:Name="Warehouse_DropDown_br" 
+                    Visibility="Hidden"
+                    CornerRadius ="25"
+                    Margin="0,10,0,0" 
+                     Height="45"
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="{StaticResource CartBlueBrush}">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ComboBox x:Name="Warehouse_DropDown"
+                          Visibility="Hidden"
+                      FontSize="25"
+                      BorderBrush="{x:Null}"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                      Height="45"
+                   HorizontalContentAlignment="Center"
+                          
+                      SelectionChanged="ComboBox_SelectionChanged" Background="#FFF7F5F5">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding WarehouseName}" FontSize="20" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Border>
+
+            <Button   Margin="0 20 0 0" Style="{StaticResource DefButton }"  Height="45" Name="btnLogin" 
+                    
+                    BorderThickness="1" Click="LoginButton_Click">
+                <TextBlock Text="Sign In" HorizontalAlignment="Center" IsHitTestVisible="False"  FontFamily="{StaticResource ooredoo-light}" FontSize="16" FontWeight="Normal" Width="50" />
+            </Button>
+        </StackPanel>
+
+
+        <TextBox x:Name="LoginProcessingText"
+                 Style="{StaticResource Regular_TextBox_VaUp}"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                 Text="" FontSize="15" Margin="0,0,0,180" />
+        <!--popup-->
+        <Popup Name="PopupCreateNewSession"  
+                   Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-30"
+               VerticalOffset="60" 
+               AllowsTransparency="True"
+               >
+            <Grid  Width="815"  Height="429"  Name="gridPopupCreateNewSession" KeyUp="GridPopupCreateNewSession_KeyUp">
+                <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="330" Margin="172,20,173,0">
+                    <Grid Margin="-2,0,0,0"  Height="358" VerticalAlignment="Top" >
+                        <Label Content="Enter opening balance"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="82,108,0,0" VerticalAlignment="Top" Width="315" RenderTransformOrigin="0.529,1.462"/>
+                        <TextBox Name="txtopeningbalance" TextAlignment="Center"  Style="{StaticResource Regular_TextBoxLogin}" Tag="0.0" KeyDown="Txtopeningbalance_KeyDown" FontWeight="Light" FontFamily="times new roman"  HorizontalAlignment="Center" Margin="82,159,69,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,-0.656" Width="315" Height="38"/>
+                        <Label Content="Create New Session"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Width="315" RenderTransformOrigin="0.529,1.462"/>
+                    </Grid>
+                </Border>
+                <Button Style="{StaticResource DefButton}"  Content="Start(F4)" Name="btnStart" Click="BtnStart_Click"  Margin="250,252,240,131"  />
+
+            </Grid>
+        </Popup>
+        <!--end-->
+
+    </Grid>
+</Page>

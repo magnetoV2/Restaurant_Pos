@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="billno" type="xs:int" minOccurs="0" />
+              <xs:element name="date" type="xs:string" minOccurs="0" />
+              <xs:element name="time" type="xs:string" minOccurs="0" />
+              <xs:element name="tablename" type="xs:string" minOccurs="0" />
+              <xs:element name="grandtotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_items_count" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_items_count1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="username" type="xs:string" minOccurs="0" />
+              <xs:element name="custmorname" type="xs:string" minOccurs="0" />
+              <xs:element name="covers" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table2">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="productname" type="xs:string" minOccurs="0" />
+              <xs:element name="paroductarabicname" type="xs:string" minOccurs="0" />
+              <xs:element name="qtyinvoiced" type="xs:decimal" minOccurs="0" />
+              <xs:element name="saleprice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="uomname" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

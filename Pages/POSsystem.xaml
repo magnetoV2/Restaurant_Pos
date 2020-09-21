@@ -1,0 +1,536 @@
+﻿<Page  x:Class="Restaurant_Pos.Pages.POSsystem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="670" d:DesignWidth="700"
+   
+      Title="POSsystem">
+    <Grid Background="White"  KeyUp="Grid_KeyUp"  >
+        <local:PosHeaderMenu></local:PosHeaderMenu>
+        <TextBox Tag="Search" Name="txtCatSearch" Background="Transparent"  BorderBrush="White" 
+                 BorderThickness="0,0,0,1"   KeyUp="TxtCatSearch_KeyUp"
+                 HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="45,-70,0,578" FontSize="17" FontWeight="Bold" FontFamily="roboto" Foreground="White" Width="590" Height="34"></TextBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="520"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="120"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel   Margin="0,30,0,0" Grid.RowSpan="3" Grid.Column="0" Grid.Row="0"  Background="White" >
+                <Button Margin="0,20,0,20" Width="180" BorderThickness="0" TabIndex="0" Background="#2c3e50"  Foreground="White" BorderBrush="White" FontSize="20"   Click="Button_Click"  Height="45"  Content="Take Away"/>
+
+                <ListBox Height="500" ScrollViewer.CanContentScroll="True" Name="Product_ListBox" Background="#f5f5f5" SelectionChanged="Product_ListBox_SelectionChanged" HorizontalAlignment="Left" BorderThickness="0"  >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+                            <Border  CornerRadius="20" Height="150" Background="White" BorderThickness="1" >
+                                <StackPanel Orientation="Horizontal"  >
+
+                                    <Ellipse Height="80" Width="80"   Stroke="LightGray"  StrokeThickness="1">
+                                        <Ellipse.Fill>
+                                            <ImageBrush  ImageSource="{Binding ImgPath}"  />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+
+                                    <Label  Content="{Binding id}"  Margin="0,-20,0,0" Visibility="Hidden"  FontSize="18" FontWeight="Light"   Width="100" Height="30" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text="{Binding Name}"  FontSize="15"  FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" />
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+            </StackPanel>
+
+            <StackPanel Margin="0,30,0,0" Grid.RowSpan="3" Grid.Column="1" Grid.Row="0" Background="White">
+                <StackPanel  Orientation="Horizontal" Background="White" HorizontalAlignment="Stretch" Height="80"  >
+                    <Button BorderThickness="0" TabIndex="1" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" Background="White" Foreground="Black"  BorderBrush="White" FontSize="20" Height="45" x:Name="DineIn"  Click="DineIn_Click"  Width="181"   Content="Dine-In" RenderTransformOrigin="0.508,2.206"   />
+                    <Button BorderThickness="0" TabIndex="2" Style="{StaticResource MenuButton}" HorizontalAlignment="Right" Background="White" Foreground="Black"   BorderBrush="White" FontSize="20"  Height="45" x:Name="Order" Click="Order_Click"  Width="162"   Content="Order-Online"   />
+
+                </StackPanel>
+                <ListBox BorderThickness="1" Height="500" Background="White" HorizontalAlignment="Left" MinWidth="200"   SelectionChanged="ProductCat_ListBox_SelectionChanged"  Name="productCat_ListBox">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+                            <Border  CornerRadius="10"  Background="White"  BorderThickness="1" >
+                                <StackPanel Orientation="Horizontal" Height="60" Width="800" >
+                                    <Border  CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Margin="10,10,10,10" >
+                                        <Image  Source="{Binding ImgPath}" Height="40" Width="40"   />
+                                    </Border>
+
+
+                                    <Label  Content="{Binding id}"  Margin="0,-20,0,0" Visibility="Hidden"  FontSize="18" FontWeight="Light"   Width="100" Height="30" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text="{Binding Name}" Margin="-95,10,0,0" FontSize="18" FontFamily="roboto"   Height="30" HorizontalAlignment="Left" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,30,0,0" Grid.Column="2" Grid.Row="0" Background="White">
+
+                <StackPanel  Height="85" Margin="0,0,0,0" >
+                    <Button  Style="{StaticResource MenuButton}" ForceCursor="False" Background="White"  BorderBrush="White" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="16" Height="50" Width="90"  Margin="0,20,0,0">
+                        <StackPanel>
+                            <Border CornerRadius="20"  Background="#b397af" >
+                                <TextBlock  Text="M" Height="20"  Margin="0,5" Width="20" TextAlignment="Center" FontSize="15"></TextBlock>
+                            </Border>
+
+                            <TextBlock Text="(Alt+C)" Foreground="Black" Height="20" FontSize="10"></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Background="White"  Style="{StaticResource MenuButton}" BorderBrush="White" Click="Split1_Click"  Foreground="Black" HorizontalAlignment="Left"  FontSize="25" Height="50" Width="100" Name="split1"   Margin="80,-50,0,0">
+                        <StackPanel>
+                            <Image Source="C:/pos/component/Resources/Images/Icons/split.png" Height="20" Width="20" ></Image>
+                            <TextBlock Text="(Alt+S)" Height="20" FontSize="10"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White"  Style="{StaticResource MenuButton}"  BorderBrush="White" Foreground="Black" HorizontalAlignment="Left"  FontSize="25" Height="50" Width="100"    Margin="150,-50,0,0">
+                        <StackPanel>
+                            <Image Source="C:/pos/component/Resources/Images/Icons/merge.png" Height="20" Width="20" ></Image>
+                            <TextBlock Text="(Alt+M)" Height="20" FontSize="10"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White"  Style="{StaticResource MenuButton}"  BorderBrush="White" Foreground="Black" HorizontalAlignment="Left"  FontSize="25" Height="50" Width="78"    Margin="342,-50,0,0">
+                        <StackPanel>
+                            <Image Source="C:/pos/component/Resources/Images/Icons/unlock.png" Height="20" Width="20" ></Image>
+                            <TextBlock Text="Cashier" Foreground="#FF0077CC" Height="20" FontSize="10"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Label Name="lblInvoiceNo" Style="{StaticResource MenuLabel}" Margin="342,-50,0,0" FontSize="18" FontWeight="Bold" Height="40" />
+
+                </StackPanel>
+
+
+                <StackPanel Margin="0,0,0,-40"  Background="#2c3e50"  Orientation="Horizontal"  Height="110">
+                    <StackPanel Width="200" HorizontalAlignment="Left"  Orientation="Vertical">
+                        <Label Name="lblitems"  FontSize="20" FontWeight="Bold" Height="40" Foreground="White"   Width="161" RenderTransformOrigin="1.457,0.684"/>
+
+                        <Button Click="TxtTotalDiscountPer_Click" Margin="-70,0,0,0"  Foreground="White"  Name="txtTotalDiscountPer" Padding="0,5" Background="Orange" Height="41" Width="60" VerticalAlignment="Center" ></Button>
+
+                        <Label Content="(F4)" FontSize="18" Margin="-70,0,0,0"   Width="61" Height="40" Foreground="White"  />
+
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Margin="90,0,0,0" Orientation="Vertical">
+                        <Label Content="Total" HorizontalContentAlignment="Right"   FontSize="18" FontWeight="Bold" Foreground="White"  Width="229"/>
+                        <Label  Name="lblRS" HorizontalAlignment="Left" FontSize="20" HorizontalContentAlignment="Right" FontWeight="Bold" Foreground="White" Width="229"  />
+
+                    </StackPanel>
+                    
+
+                </StackPanel>
+            
+            </StackPanel>
+            <ListBox x:Name="price_ListBox"  Grid.Column="3" Grid.Row="1"  Background="#f5f5f5"  Margin="0,40,0,0" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1"  CornerRadius="10" Background="White">
+                                <StackPanel>
+                                    <StackPanel Margin="10,10,10,10"  Orientation="Horizontal">
+                                        <TextBlock  Width="110" Text="{Binding Name}"  FontSize="18" FontFamily="times new roman" HorizontalAlignment="Left"></TextBlock>
+                                        <TextBlock  Width="90" Text="{Binding Price, StringFormat=xQR {0}}"  FontSize="18"  FontFamily="times new roman" Margin="70,0,0,0" TextAlignment="Center"></TextBlock>
+                                        <TextBlock  Width="110" Text="{Binding TotalPrice, StringFormat=xQR {0}}" FontSize="18"  FontFamily="times new roman" Foreground="#FF0077CC" Margin="75,0,0,0"  TextAlignment="Right"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel  Orientation="Horizontal">
+                                        <CheckBox ToolTip="{Binding Name}" Click="CheckBox_Click"  Visibility="{Binding checkbox}"></CheckBox>
+                                        <Button  Content="{Binding Path=discountAmt}" Name="btnPer" ToolTip="{Binding Name}" Click="BtnPer_Click"  Margin="10,10,60,10" Padding="0,5" Background="Orange" Height="30" Width="40"  VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                                    <Button Name="btnNotesEdit" ToolTip="{Binding Name}" Click="BtnNotesEdit_Click" Margin="90,10,10,10" Padding="0,5" Background="Gray" Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Image Source="C:/pos/component/Resources/Images/Icons/edit.png" Height="15" Width="15" />
+                                        </Button>
+                                        <StackPanel Orientation="Horizontal" Width="300"  Margin="130,10,50,10">
+                                            <Border BorderThickness="1" BorderBrush="#FF0077CC">
+                                                <Button Click="BtnDec_Click"  ToolTip="{Binding Name}" x:Name="btnDec"  BorderThickness="0" Padding="0,5"  Background="White" Height="28" Width="29"  VerticalAlignment="Center" Foreground="Black" Content="-" HorizontalAlignment="Center"></Button>
+                                            </Border>
+                                            <TextBlock  Text="{Binding ItemCount}" Padding="0,5" FontSize="18"  FontFamily="times new roman" Foreground="White" FontWeight="Bold" Background="#FF0077CC" Height="31" Width="31" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                            <Border BorderThickness="1" BorderBrush="#FF0077CC">
+                                                <Button Click="BtnInc_Click" ToolTip="{Binding Name}" BorderThickness="0" x:Name="BtnInc" Padding="0,5" Background="White" Height="28" Width="29"  VerticalAlignment="Center" Content="+" Foreground="Black" HorizontalAlignment="Center"></Button>
+                                            </Border>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            <StackPanel Grid.Column="3" Grid.Row="2">
+                <Label Name="SplitInvoiceNo" Visibility="Hidden" Background="Gray" Foreground="Black" Content="Split Invoice"  FontSize="20" Height="40"></Label>
+                <StackPanel Height="85" Margin="0,0,0,0" >
+                    <StackPanel Height="85" Margin="0,-10,0,0" >
+
+                        <Button Background="#e74c3c" Visibility="Visible"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="25" Height="60"  Click="CancelOrder_Click" x:Name="cancel_Order" Width="110" Margin="0,10,0,0">
+                            <StackPanel>
+                                <Image Source="C:/pos/component/Resources/Images/Icons/cancel.png" Height="30"></Image>
+                                <TextBlock Text="(F3)" FontSize="10" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+
+
+                        </Button>
+                        <Button  Visibility="Visible" Background="#2c3e50" Click="KOT_Click" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="110" Margin="110,-60,0,0"  x:Name="KOT" >
+
+                            <StackPanel>
+                                <Image Source="C:/pos/component/Resources/Images/Icons/boost.png" Height="30"></Image>
+                                <TextBlock Text="(F7)" FontSize="10" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Visibility="Visible" Background="#359bdb"  Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="110"   Click="PreBill_Click"  Margin="210,-60,0,0" x:Name="Pre_bil" >
+                            <StackPanel>
+                                <Image Source="C:/pos/component/Resources/Images/Icons/print.png" Height="30"></Image>
+                                <TextBlock Text="(F12)" FontSize="10" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+
+                        </Button>
+                        <Button Visibility="Visible" Click="HR_Click" Background="#2c3e50" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="105" Margin="320,-60,0,0"  x:Name="HR" >
+                            <StackPanel>
+                                <TextBlock Text="2" FontSize="30" Margin="0,-10,0,-5" TextAlignment="Center"></TextBlock>
+                                <TextBlock Text="(F8)" FontSize="10" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Visibility="Visible" Background="#43a047" Foreground="White" HorizontalAlignment="Left" Click="Completed_Click"  FontSize="25" Height="60" Width="105" Margin="425,-60,0,0" x:Name="completed" >
+                            <StackPanel>
+                                <Image Source="C:/pos/component/Resources/Images/Icons/right.png" Height="30"></Image>
+                                <TextBlock Text="(F10)" FontSize="10" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Click="Spit_Back_Click" BorderBrush="White" Background="White"   Visibility="Hidden"   Foreground="Black" FontSize="25"  Width="220" Height="40" HorizontalAlignment="Left"  Margin="10,-50,0,0"  x:Name="Spit_Back" Content="Go back" RenderTransformOrigin="0.388,0.583"/>
+
+                        <Button Visibility="Hidden"  Style="{StaticResource DefaultButton}" Foreground="White" FontSize="16"   Height="48" Width="220"  HorizontalAlignment="Left"   Margin="300,-45,0,0" x:Name="split"   Click="Split_Click" Content="Split(F10)"/>
+
+                        <!--<Button Background="Red" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="25" Height="60"  Click="CancelOrder_Click" Width="110" Content="X" Margin="0,10,0,0"/>
+                <Button Background="DimGray" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="110" Margin="110,-60,0,0">KOT</Button>
+                <Button Background="SkyBlue" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="110"   Click="PreBill_Click"  Margin="210,-60,0,0">Pre Bill</Button>
+                <Button Background="DimGray" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="110" Margin="310,-60,0,0">HR</Button>
+                <Button Background="LightGreen" Foreground="White" HorizontalAlignment="Left"  FontSize="25" Height="60" Width="130" Margin="410,-60,0,0">complete</Button>-->
+
+                    </StackPanel>
+
+
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--HOld Orders-->
+            
+                <ListBox Name="onHoldOrders" Visibility="Hidden" Background="white"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"  SelectionChanged="OnHoldOrders_SelectionChanged" >
+                
+                
+                    <ListBox.ItemTemplate>
+                   
+                        <DataTemplate>
+                            <Border  CornerRadius="10"  Background="White" HorizontalAlignment="Stretch" BorderThickness="1" >
+
+                                <StackPanel Width="600"  HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                    <Label   FontSize="18"  FontWeight="Bold"   Width="200"  Height="30" HorizontalAlignment="Left"  Content="{Binding c_invoice_id}"></Label>
+                                    <Label  Margin="0,0,0,0" FontSize="18" FontWeight="Light"   Width="200"  Height="30" HorizontalAlignment="Left" Content="{Binding total_items_count}"></Label>
+                                    <Label Margin="0,10,0,0"  FontSize="18"  FontFamily="roboto" Width="200" Foreground="#FF0077CC"  Height="30"  Content="{Binding grandtotal}"></Label>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            
+
+                
+          
+            <!--HOld Orders-->
+            <!-- Popup Window-->
+
+
+            <Popup Name="paymentPopup"
+                  Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40"
+                     AllowsTransparency="True"
+            
+                   >
+
+                <Grid  Width="815"  Height="460"  Name="gridpaymentPopup" KeyUp="GridpaymentPopup_KeyUp" >
+                    <Border  Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="800" Height="450">
+                        <Grid Margin="7,0,-2,-3" >
+                            <Label Content="Payment" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" Width="226"/>
+                            <StackPanel Background="#FFF7F7F7" HorizontalAlignment="Left" Height="161" Margin="175,46,0,0" VerticalAlignment="Top" Width="301">
+                                <Label Content="PAYABLE" HorizontalContentAlignment="Right"  Margin="160,0,40,0" RenderTransformOrigin="1.923,-0.087"/>
+                                <Label Content="TOTAL" HorizontalContentAlignment="Right" Margin="0,-25,0,0"/>
+
+                                <Label Content="DISCOUNT" HorizontalContentAlignment="Right"  Margin="10,50,196,0" RenderTransformOrigin="0.313,3.232"/>
+                                <Label Content="BALANCE" HorizontalContentAlignment="Right" Margin="160,-30,40,0" RenderTransformOrigin="1.923,-0.087" Height="24"/>
+                                <Label Name="DiscountAmt" HorizontalContentAlignment="Right" FontSize="18" Height="30" FontWeight="Bold" Margin="10,10,196,0" />
+                                <Label Name="BalanceAmt"   HorizontalContentAlignment="Right" FontSize="18" Height="30" FontWeight="Bold" Margin="160,-30,40,0" />
+                                <Label  Name="TotalAmt" HorizontalContentAlignment="Right" FontSize="20" Height="40" FontWeight="Bold" Margin="10,-190,196,0"/>
+                                <Label Name="PayableAmt" HorizontalContentAlignment="Right" FontSize="18" Height="30" Foreground="Red" FontWeight="Bold" Margin="160,-190,40,0" />
+
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Height="110" Margin="481,43,0,0" VerticalAlignment="Top" Width="298"/>
+                            <Border Margin="495,46,26,367" Padding="5" BorderThickness="1" BorderBrush="Gray" Background="White" Height="34" CornerRadius="20" RenderTransformOrigin="0.531,1.477">
+                                <TextBox x:Name="txtWaiter" Text="Choose a Waiter"  FontSize="16"  TextAlignment="Center" BorderThickness="0" Height="28" Width="170" Margin="6,-2,-6,0" Tag="dsfsdf" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"  />
+                            </Border>
+                            <Border x:Name="Customer_DropDown_br"
+                    CornerRadius ="20"
+                    Margin="495,107,15,297"
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="Gray">
+
+                                <ComboBox x:Name="Customer_DropDown"
+                      
+                      FontSize="20"
+                      BorderBrush="{x:Null}"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                     
+                      Background="White" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.571" Margin="18,0,0,-1" HorizontalAlignment="Left" Width="233" Height="42">
+
+                                    <ComboBox.ItemTemplate >
+                                        <DataTemplate >
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                                <TextBlock Text="{Binding id}" Visibility="Hidden"  />
+                                                <TextBlock Text="{Binding Name}"  FontSize="16" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Border>
+
+
+                            <Button Content="Complete(F10)" HorizontalAlignment="Left" Background="Green" Name="btnComplete" Click="BtnComplete_Click"  Foreground="White"  Margin="490,340,0,0" VerticalAlignment="Top" Width="284" Height="34"/>
+                            <Button Content="Close(Esc)" Name="btnClose" Click="BtnClose_Click" HorizontalAlignment="Left" Margin="490,391,0,0" VerticalAlignment="Top" Width="284" Height="34"/>
+                        </Grid>
+
+                    </Border>
+                    <StackPanel HorizontalAlignment="Center" Height="155" Margin="10,51,622,0" VerticalAlignment="Top" Width="168">
+                        <RadioButton Content="Cash" IsChecked="True" Foreground="Black" FontSize="16" Height="28" Margin="10,0,34,0"/>
+                        <RadioButton Content="Cradit" Foreground="Black" FontSize="16" Height="28" Margin="10,30,34,0"/>
+                        <RadioButton Content="Compliment" Foreground="Black" FontSize="16" Height="28" Margin="10,30,34,0"/>
+                    </StackPanel>
+                    <Border Margin="10,226,561,190" Padding="5" BorderThickness="1" BorderBrush="Gray" Background="White" Width="200" Height="34" CornerRadius="20" RenderTransformOrigin="0.531,1.477">
+                        <TextBox x:Name="txtBal" KeyUp="TxtBal_KeyUp"  FontSize="16"  TextAlignment="Center" BorderThickness="0" Width="180" Height="28" Margin="6,-2" Tag="dsfsdf" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"  />
+                    </Border>
+                    <Border Margin="10,270,561,146" Padding="5"  BorderThickness="1" BorderBrush="Gray" Background="White" Height="34" Width="200" CornerRadius="20" RenderTransformOrigin="0.531,1.477">
+                        <TextBox x:Name="txtGiftCard" Text="0.0"  FontSize="16"  TextAlignment="Center" BorderThickness="0" Height="28" Width="180" Margin="6,-2,0,0" Tag="dsfsdf" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top" HorizontalAlignment="Left"  />
+                    </Border>
+                    <Border Margin="274,226,318,190" Padding="5" BorderThickness="1" BorderBrush="Gray" Background="White" Height="34" Width="200" CornerRadius="20" RenderTransformOrigin="0.531,1.477">
+                        <TextBox x:Name="txtDebitCard" Text="Credit/DebitCard"  FontSize="16"  TextAlignment="Center" BorderThickness="0" Width="200" Height="28" Margin="6,-2" Tag="dsfsdf" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"  />
+
+                    </Border>
+                    <Border Margin="24,309,318,58" Padding="5" BorderThickness="1" BorderBrush="Gray" Background="White" CornerRadius="20" RenderTransformOrigin="0.531,1.477" HorizontalAlignment="Center" Width="458">
+
+
+                        <TextBox x:Name="txtReason" Text="Please Enter Reason" TextAlignment="Left"  FontSize="16"   BorderThickness="0" Height="90" Margin="4,-6" Tag="dsfsdf" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Center"   />
+                    </Border>
+                    <StackPanel HorizontalAlignment="Center" Height="183" Margin="487,156,0,0" VerticalAlignment="Top" Width="303">
+                        <Button Content="1" Height="34" Name="one" Width="80" Click="One_Click"  Margin="10,10,213,0"/>
+                        <Button Content="3"  Height="34" Width="80" Name="three" Click="Three_Click"  Margin="210,-35,0,0"/>
+                        <Button Content="2" Height="34" Width="80"  Name="two"  Click="Two_Click" Margin="110,-35,105,0"/>
+
+                        <Button Content="4"  Height="34" Width="80" Name="four" Click="Four_Click" Margin="10,10,213,0"/>
+                        <Button Content="7"  Height="34" Width="80" Name="seven" Click="Seven_Click"  Margin="10,10,213,0"/>
+
+                        <Button Content="x"  Height="34" Width="80" Name="mul" Click="Mul_Click"  Margin="10,10,213,0"/>
+                        <Button Content="5" Height="34" Width="80" Name="five" Click="Five_Click"  Margin="114,-210,109,0" />
+                        <Button Content="6" Height="34" Width="80" Name="six" Click="Six_Click" Margin="216,-210,7,0" />
+                        <Button Content="8" Height="34" Width="80" Name="eight" Click="Eight_Click"  Margin="114,-125,109,0" />
+                        <Button Content="0" Height="34" Width="80" Name="ziro" Click="Ziro_Click"  Margin="114,-35,109,0" />
+                        <Button Content="9" Height="34" Width="80" Name="nine" Click="Nine_Click" Margin="216,-125,7,0" />
+                        <Button Content="." Height="34" Width="80" Name="point" Click="Point_Click" Margin="216,-35,7,0" />
+                    </StackPanel>
+
+                </Grid>
+            </Popup>
+
+
+
+            <Popup Name="MyPopupNotes"
+                Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+                   >
+
+                <Grid  Width="815"  Height="429" Name="GridMyPopupNotes" KeyUp="GridMyPopupNotes_KeyUp" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="349" Margin="165,20,165,0">
+                        <Grid  Margin="0,0,20,0" Name="gridPopup" Height="336" VerticalAlignment="Top" >
+                            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Name="lblItemName" HorizontalAlignment="Left" Margin="43,60,0,0" VerticalAlignment="Top" Width="358" RenderTransformOrigin="0.529,1.462" Height="46"/>
+                            <Label Content="Notes" FontFamily="times new roman" FontSize="21"  HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" Width="126"/>
+
+                        </Grid>
+                    </Border>
+
+                    <TextBox BorderBrush="Gray"  x:Name="txtnotes" Style="{StaticResource RegularTexBox}" BorderThickness="1"  Margin="203,150,199,0" Tag="Type Hear...."  RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top" Height="100"></TextBox>
+
+                    <Button Style="{StaticResource DefaultButton}" Content="Submit(F4)"  Name="btnPopupNotesSubmit" Click="BtnPopupNotesSubmit_Click" ForceCursor="False"     VerticalAlignment="Bottom"  Width="183"  Margin="192,0,0,104" HorizontalAlignment="Left" Height="45"  />
+
+                    <Button Content="Cancel(Esc)" Style="{StaticResource CancelButton}" Name="btnPopupNotesCancel" Click="BtnPopupNotesVancel_Click" Margin="480,280,199,89" RenderTransformOrigin="1.615,-0.175" Width="Auto"   />
+
+                </Grid>
+            </Popup>
+
+
+
+
+            <Popup Name="MyPopupLineDisc"
+                  Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+               >
+                <Grid  Width="815"  Height="429" Name="gridMyPopupLineDisc" KeyUp="GridMyPopupLineDisc_KeyUp" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="349" Margin="165,20,165,0">
+                        <Grid Margin="-2,0,0,0"  Height="358" VerticalAlignment="Top" >
+                            <Label Content="1*25.0"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,88,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.529,1.462"/>
+
+                            <RadioButton Name="qar_line_radio" FontWeight="Light" FontFamily="times new roman" FontSize="18" IsChecked="True"  GroupName="discountType" Content="QAR" HorizontalAlignment="Left" Margin="180,120,0,0" VerticalAlignment="Top"/>
+                            <RadioButton Name="per_line_radio" FontWeight="Light" FontFamily="times new roman" FontSize="18" GroupName="discountType" Content="%" HorizontalAlignment="Left" Margin="257,120,0,0" VerticalAlignment="Top" Width="60"/>
+                            <TextBlock Padding="7" Margin="43,10,0,308" FontWeight="Bold" FontSize="21" FontFamily="times new roman">Line Discount</TextBlock>
+
+                            <Label Name="lblitemName"   FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,55,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.529,1.462" Height="28"/>
+                            <Label Name="lbllblitemPrice"  FontWeight="Light" FontFamily="times new roman" FontSize="18"  HorizontalAlignment="Left" Margin="240,55,0,0" VerticalAlignment="Top" Width="199" RenderTransformOrigin="0.529,1.462" Height="31"/>
+
+                        </Grid>
+                    </Border>
+                    <TextBox x:Name="discount"  Margin="254,221,255,0" Style="{ StaticResource Regular_TextBox}"    TextAlignment="Center"  Tag="Amount" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"   />
+
+                    <Label Content="Enter the discount amount" HorizontalContentAlignment="Center"   HorizontalAlignment="Center" Margin="254,184,255,0" VerticalAlignment="Top" Width="306"  FontWeight="Light" FontFamily="times new roman" FontSize="18" />
+                    <Button Style="{StaticResource DefaultButton}"  Content="Ok(Enter)" Name="MyPopupLineDiscSubmit" Click="MyPopupLineDiscSubmit_Click"  ForceCursor="False" Foreground="White" Margin="250,294,410,89"  />
+
+                    <Button Style="{StaticResource CancelButton}"  Content="Cancel(Esc)" Name="btnMyPopupLineDiscCancel" Click="BtnMyPopupLineDiscCancel_Click"  Margin="440,294,245,89"  />
+
+                </Grid>
+            </Popup>
+
+
+            <Popup Name="MyPopupTotalDisc"
+                  Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+               >
+                <Grid  Width="815"  Height="429" Name="GridMyPopupTotalDisc" KeyUp="GridMyPopupTotalDisc_KeyUp" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="349" Margin="165,20,165,0">
+                        <Grid Margin="-2,0,0,0" Height="358" VerticalAlignment="Top" >
+                            <Label Content="Bill Amount"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,88,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.529,1.462"/>
+                            <Label Name="billAmt"   FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="240,88,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,-0.656" Width="199" Height="31"/>
+
+                            <RadioButton Content="QAR" Name="qar_total_radio" FontWeight="Light" FontFamily="times new roman" FontSize="18" IsChecked="True"  HorizontalAlignment="Left" Margin="180,134,0,0" VerticalAlignment="Top"/>
+                            <RadioButton  Content="%" Name="per_total_radio" FontWeight="Light" FontFamily="times new roman" FontSize="18"  HorizontalAlignment="Left" Margin="240,134,0,0" VerticalAlignment="Top"/>
+                            <TextBlock Padding="7" Margin="43,10,0,308" FontWeight="Bold" FontSize="21" FontFamily="times new roman">Total Discount</TextBlock>
+
+                            <Label Content="Bill No-"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,55,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.529,1.462"/>
+                            <Label Name="lblbillNo"  FontWeight="Light" FontFamily="times new roman" FontSize="18"  HorizontalAlignment="Left" Margin="240,55,0,0" VerticalAlignment="Top" Width="199" RenderTransformOrigin="0.529,1.462" Height="31"/>
+
+                        </Grid>
+                    </Border>
+                    <TextBox x:Name="txtOpeningBalanceDisc"  Margin="254,221,255,0" Style="{ StaticResource Regular_TextBox}"    TextAlignment="Center"  Tag="Amount" RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"   />
+
+                    <Label Content="Enter The Discount Amount" HorizontalContentAlignment="Center"   HorizontalAlignment="Center" Margin="254,184,255,0" VerticalAlignment="Top" Width="306"  FontWeight="Light" FontFamily="times new roman" FontSize="18" />
+                    <Button Style="{StaticResource DefaultButton}"  Content="Ok(Enter)" Name="btnMyPopupTotalDiscOK" Click="BtnMyPopupTotalDiscOK_Click"  ForceCursor="False" Foreground="White" Margin="250,294,410,89"  />
+
+                    <Button Style="{StaticResource CancelButton}"  Content="Cancel(Esc)" Name="btnMyPopupTotalDiscCancel" Click="BtnMyPopupTotalDiscCancel_Click"  Margin="440,294,245,89"  />
+
+                </Grid>
+            </Popup>
+
+
+            <!--Popup-->
+            <!--Cancel-Order-popUp-By-sachin-->
+
+
+            <Popup Name="PopupCancelOrder"  
+                   Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+               >
+                <Grid  Width="815"  Height="429" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="200" Margin="172,20,173,0">
+                        <Grid Margin="-2,0,0,0" Name="gridMyPopupOrderConfirmation" Height="358" VerticalAlignment="Top" >
+                            <Label Content="Confirmation"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,18,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.529,1.462"/>
+                            <Label  Content="Are you sure want to cancel the bill ?"   FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,-0.656" Width="329" Height="31"/>
+
+
+                        </Grid>
+                    </Border>
+                    <Button Style="{StaticResource DefaultButton}"  Content="No" Name="PopupCancelOrderCancel" Click="PopupCancelOrderCancel_Click"  ForceCursor="False" Foreground="White" Margin="215,149,445,234"  />
+
+                    <Button Style="{StaticResource DefaultButton}"  Content="Yes" Name="PopupCancelOrderConfirm" Click="PopupCancelOrderConfirm_Click"  Margin="425,149,230,234"  />
+
+                </Grid>
+            </Popup>
+
+            <Popup Name="PopupCancelOrderReason" 
+               Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+               >
+                <Grid  Width="815"  Height="429" Name="gridMyPopupOrderReason" KeyUp="GridMyPopupOrderReason_KeyUp" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="260" Margin="172,20,173,0">
+                        <Grid Margin="-2,0,0,0"  Height="358" VerticalAlignment="Top" >
+                            <Label Content="Cancel Order"  FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,18,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.529,1.462"/>
+                            <Label  Content="Select a reason to cancel Order ?"   FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,-0.656" Width="329" Height="31"/>
+                            <StackPanel Margin="20" Orientation="Horizontal">
+                                <RadioButton Margin="20,56,20,230"  FontWeight="Light" FontFamily="times new roman" FontSize="18" IsChecked="True" Content="Wrong Order"  Name="rWrongOrder"></RadioButton>
+                                <RadioButton Margin="20,58,20,228"  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Customer Left"  Name="rCustomerLeft" Width="145"></RadioButton>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+
+                    <Button Style="{StaticResource DefaultButton}"  Content="No" Name="PopupCancelReasonCancel" Click="PopupCancelOrderCancel_Click"  ForceCursor="False" Foreground="White" Margin="215,214,445,169"  />
+
+                    <Button Style="{StaticResource DefaultButton}"  Content="Yes" Name="PopupCancelReasonConfirm" Click="PopupCancelReasonConfirm_Click"  Margin="425,214,230,169"  />
+
+                </Grid>
+            </Popup>
+
+            <Popup Name="PopupSecurityConfirmation" 
+                 Placement="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+               HorizontalOffset="-410"
+               VerticalOffset="-40" 
+               AllowsTransparency="True"
+               >
+                <Grid  Width="815"  Height="429"  Name="gridMyPopupSecurityConfirmation" KeyUp="GridMyPopupSecurityConfirmation_KeyUp" >
+                    <Border Background="White"  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="260" Margin="172,20,173,0">
+                        <Grid Margin="-2,0,0,0" Height="358" VerticalAlignment="Top" >
+                            <Label Content="Security confirmation"  FontWeight="Bold" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,18,0,0" VerticalAlignment="Top" Width="224" RenderTransformOrigin="0.529,1.462"/>
+                            <Label  Content="Please enter security code" HorizontalContentAlignment="Center"   FontWeight="Light" FontFamily="times new roman" FontSize="18" HorizontalAlignment="Left" Margin="43,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,-0.656" Width="329" Height="31"/>
+                            <TextBox Style="{StaticResource Regular_TextBox}" Margin="43,117,69,201" BorderBrush="Wheat" BorderThickness="1"  Tag="Code"  Name="txtsecurityCode"/>
+
+
+                        </Grid>
+                    </Border>
+                    <Button Style="{StaticResource DefaultButton}"  Content="Submit(F4)" Name="PopupSecurityConfirmationConfirm" Click="PopupSecurityConfirmationConfirm_Click"  ForceCursor="False" Foreground="White" Margin="215,214,445,169"  />
+
+                    <Button Style="{StaticResource CancelButton}"  Name="PopupSecurityConfirmationCancel" Click="PopupSecurityConfirmationCancel_Click"  Margin="425,214,230,169"  />
+
+                </Grid>
+            </Popup>
+
+            <!--Cancel-Order-popUp-By-sachin-->
+        </Grid>
+    </Grid>
+</Page>

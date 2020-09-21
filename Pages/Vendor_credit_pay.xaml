@@ -1,0 +1,114 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.Vendor_credit_pay"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Vendor_credit_pay">
+
+    <Grid>
+        <local:Header_Menu></local:Header_Menu>
+        <Image Grid.Column="1" Source="C:/pos/component/Resources/Images/Icons/left-arrow.png" HorizontalAlignment="Left" Height="30" Margin="0,40,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.771,0.381" Grid.RowSpan="2"/>
+        <TextBlock Padding="7" Margin="30,40,0,399" TextAlignment="Left" FontWeight="SemiBold" FontSize="18" FontFamily="roboto" HorizontalAlignment="Left" Width="201" ><Run Text="Vendor Credit Pay"/></TextBlock>
+        <TextBox KeyUp="Product_Search_KeyUp" BorderBrush="Gray" BorderThickness="1"  x:Name="product_Search" Style="{StaticResource Regular_TextBox}"    FontSize="17"  TextAlignment="Center" Foreground="Black" Tag="Search" HorizontalAlignment="Left" Width="300"  Margin="10,80,0,0" Height="53" VerticalAlignment="Top"/>
+        <Label Content="Used:" FontWeight="Bold" Foreground="Red"  HorizontalAlignment="Left" Margin="335,51,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="QR40" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Left" Margin="427,51,0,0" VerticalAlignment="Top" Width="68"/>
+
+        <Label Content="Available:" FontWeight="Bold" Foreground="Green" HorizontalAlignment="Left" Margin="520,53,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label  Name="lblableAmt" FontWeight="Bold" Foreground="Green"  HorizontalAlignment="Left" Margin="593,55,0,0" VerticalAlignment="Top" Width="68" Height="25"/>
+        <TextBox x:Name="LoginProcessingText"
+                 Style="{StaticResource Regular_TextBox_VaUp}"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                 Text="" FontSize="15" Height="24" Width="300" Margin="835,0,-335,0"  />
+
+        <Grid Margin="10,150,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <ListBox Grid.Row="0" Grid.Column="0"   SelectionChanged="CustPayment_ListBox_SelectionChanged"  Background="White"   BorderThickness="0"  x:Name="CustPayment_ListBox"  >
+                <ListBox.ItemTemplate>
+                    <DataTemplate >
+                        <Border  CornerRadius="20" Background="#f5f5f5" >
+                            <StackPanel Orientation="Horizontal" >
+
+                                <Ellipse Height="40" Width="40"   Stroke="LightGray" Margin="10" StrokeThickness="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush  ImageSource="{Binding Path}"  />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <Label  Content="{Binding id}"  Margin="0,-10,0,0"  FontSize="16" FontFamily="roboto"   Width="100" Height="30" HorizontalAlignment="Left"/>
+                                <TextBlock  Text="{Binding Name}" Margin="-93,20,0,0" FontSize="18"  FontWeight="SemiBold"  FontFamily="times new roman"  Width="300" Height="20" HorizontalAlignment="Left" />
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+
+            </ListBox>
+            <ListBox Grid.Row="0" Grid.Column="1"    Background="White"  BorderThickness="0"  x:Name="CustPaymentBal_ListBox"  >
+                <ListBox.ItemTemplate>
+                    <DataTemplate >
+                        <Border  CornerRadius="20"  Background="#f5f5f5" >
+                            <StackPanel Orientation="Horizontal" Height="80" >
+
+                                <CheckBox ToolTip="{Binding documentNo}" Click="CheckBox_Click"  Visibility="{Binding checkbox}"></CheckBox>
+
+                                <Label  Content="{Binding invoiceId}"  Margin="10,-20,0,0"  FontSize="16" FontFamily="roboto"   Width="300" Height="30" HorizontalAlignment="Left"/>
+                                <TextBlock  Text="{Binding documentNo}" Name="Items" Margin="-295,20,0,0" FontSize="18" FontWeight="SemiBold"  FontFamily="times new roman"  Width="300" Height="20" HorizontalAlignment="Left" />
+
+                                <Label  Content="{Binding invoiceDate}" Name="Date"  Margin="-50,-10,0,0"  FontSize="16" FontFamily="roboto"   Width="300" Height="30" HorizontalAlignment="Left"/>
+                                <TextBlock  Text="{Binding grandTotal}" Name="rate" Foreground="Red"  Margin="-190,20,0,0" FontSize="16" FontWeight="Bold" FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" />
+                                <Label  Content="{Binding posId}" Visibility="Hidden"  Margin="10,-20,0,0"  FontSize="16" FontFamily="roboto"   Width="300" Height="30" HorizontalAlignment="Left"/>
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+
+            </ListBox>
+
+            <StackPanel  Grid.Row="0" Grid.Column="2" Visibility="Hidden" Name="spvender"  Background="White" >
+                <Label Content="Payment Amount" Height="45" FontSize="21" Margin="50,0,0,0"/>
+                <Label  Name="lblPaymentAmt"  Height="45" Foreground="Red" FontSize="21" Margin="250,-49,0,0"/>
+                <TextBox  BorderBrush="Gray" BorderThickness="1"  x:Name="txtBal" Style="{StaticResource Regular_TextBox}"    FontSize="17"  TextAlignment="Center" Foreground="Black" Tag="Amount" HorizontalAlignment="Left" Width="155"  Margin="55,20,0,0" Height="53" VerticalAlignment="Top"/>
+                <TextBox  BorderBrush="Gray" BorderThickness="1"  x:Name="GiftCard" Style="{StaticResource Regular_TextBox}"    FontSize="17"  TextAlignment="Center" Foreground="Black" Tag="Credit/Debit Card" HorizontalAlignment="Left" Width="140"  Margin="220,-53,0,0" Height="53" VerticalAlignment="Top"/>
+                <TextBox  BorderBrush="Gray" BorderThickness="1"  x:Name="Notes" Style="{StaticResource Regular_TextBox}"    FontSize="17"  TextAlignment="Center" Foreground="Black" Tag="Notes" HorizontalAlignment="Left" Width="295"  Margin="55,30,0,0" Height="62" VerticalAlignment="Top"/>
+                <StackPanel HorizontalAlignment="left" Height="250" Margin="50,0,0,0" VerticalAlignment="Top">
+                    <Button Content="1" Height="34" Name="one" Width="80" Click="One_Click"  Margin="10,10,213,0"/>
+                    <Button Content="3"  Height="34" Width="80" Name="three" Click="Three_Click"  Margin="210,-35,0,0"/>
+                    <Button Content="2" Height="34" Width="80"  Name="two"  Click="Two_Click" Margin="110,-35,105,0"/>
+
+                    <Button Content="4"  Height="34" Width="80" Name="four" Click="Four_Click" Margin="10,10,213,0"/>
+                    <Button Content="7"  Height="34" Width="80" Name="seven" Click="Seven_Click"  Margin="10,10,213,0"/>
+
+                    <Button Content="*"  Height="34" Width="80" Name="mul" Click="Mul_Click"  Margin="10,10,213,0"/>
+                    <Button Content="5" Height="34" Width="80" Name="five" Click="Five_Click"  Margin="114,-210,109,0" />
+                    <Button Content="6" Height="34" Width="80" Name="six" Click="Six_Click" Margin="216,-210,7,0" />
+                    <Button Content="8" Height="34" Width="80" Name="eight" Click="Eight_Click"  Margin="114,-125,109,0" />
+                    <Button Content="0" Height="34" Width="80" Name="ziro" Click="Ziro_Click"  Margin="114,-35,109,0" />
+                    <Button Content="9" Height="34" Width="80" Name="nine" Click="Nine_Click" Margin="216,-125,7,0" />
+                    <Button Content="." Height="34" Width="80" Name="point" Click="Point_Click" Margin="216,-35,7,0" />
+                    <Button Content="1" Style="{StaticResource CancelButton}" Name="Cancel" Width="Auto"  Margin="-150,30,0,0"/>
+                    <Button Content="3" Style="{StaticResource SaveButton}" Click="Pay_Click" Width="Auto" Name="Pay"   Margin="180,-40,0,0"/>
+                </StackPanel>
+
+
+
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>
