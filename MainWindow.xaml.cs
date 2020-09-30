@@ -55,6 +55,19 @@ namespace Restaurant_Pos
 
         }
 
-       
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.I && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+            {
+                MainFrame.Navigate(new DineIn());
+            }
+            if (e.Key == Key.O && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+            {
+
+                MainFrame.Navigate(new orderonline());
+            }
+
+        }
+
     }
 }

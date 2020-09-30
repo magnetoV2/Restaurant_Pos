@@ -1672,6 +1672,7 @@ namespace Restaurant_Pos.Pages
                 {
                     BindTakeAwayProductRS(id);
                     selectedItemForEditNotes = PC.Name;
+                    selectItemForLineDiscount = PC.Name;
                 }
                 else
                 {
@@ -1731,13 +1732,17 @@ namespace Restaurant_Pos.Pages
                     lblItemName.Content = "items";
 
                 }
-                if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
+                if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
                     TxtTotalDiscountPer_Click(sender, e);
                 }
-                if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
+                if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
-                    BtnPer_Click(sender, e);
+                    MyPopupLineDisc.IsOpen = true;
+
+                   
+                    lblitemName.Content = selectItemForLineDiscount;
+                   
                 }
                 if (e.Key.ToString().ToUpper() == "F3")
                 {
@@ -1746,6 +1751,28 @@ namespace Restaurant_Pos.Pages
                 if (e.Key.ToString().ToUpper() == "F7")
                 {
                     KOT_Click(sender, e);
+                }
+                if (e.Key.ToString().ToUpper() == "F11")
+                {
+                    if (lblInvoiceNo.Content == null || lblInvoiceNo.Content.ToString() == "")
+
+                    {
+                       
+                        m_TakeAwayProductRS SelectedItem = _m_TakeAwayProductRS.Find(i => i.Name == selectedItemForEditNotes);
+                        int SelectedItemIndex = _m_TakeAwayProductRS.FindIndex(i => i.Name == selectedItemForEditNotes);
+                        _m_TakeAwayProductRS.RemoveAt(SelectedItemIndex);
+
+                        SelectedItem.ItemCount += 1;
+
+                        _m_TakeAwayProductRS.Insert(SelectedItemIndex, SelectedItem);
+                        price_ListBox.Items.Refresh();
+                        calculateSum();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Can Not Modify, Bill Already Generated");
+                    }
+
                 }
                 if (e.Key.ToString().ToUpper() == "F12")
                 {
@@ -1763,7 +1790,7 @@ namespace Restaurant_Pos.Pages
                 {
                     txtCatSearch.Focus();
                 }
-                if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
+                if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
 
                     Split1_Click(sender, e);
@@ -1937,5 +1964,9 @@ namespace Restaurant_Pos.Pages
 
 
         }
+
+       
+
+       
     }
 }

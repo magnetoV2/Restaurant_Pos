@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Newtonsoft.Json.Linq;
+using Npgsql;
 using System;
 using System.Configuration;
 using System.IO;
@@ -12,8 +13,11 @@ namespace Restaurant_Pos
     {
         /// <summary>
         /// Default Base Values
+        /// 
+        /// 
+       // public static string connstring = PostgreSQL.ConnectionString;
         /// </summary>
-         private static string  Name = ConfigurationManager.AppSettings.Get("ServerName");
+        private static string  Name = ConfigurationManager.AppSettings.Get("ServerName");
         private static string  Port = ConfigurationManager.AppSettings.Get("ServerPort");
         private static string  UserID = ConfigurationManager.AppSettings.Get("ServerUserID");
         private static string  Password = ConfigurationManager.AppSettings.Get("ServerPassword");
@@ -53,7 +57,8 @@ namespace Restaurant_Pos
             // Get the response.
             WebResponse response = request.GetResponse();
             // Display the status.
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
             // Get the stream containing content returned by the server.
             dataStream = response.GetResponseStream();
             // Open the stream using a StreamReader for easy access.
@@ -66,6 +71,25 @@ namespace Restaurant_Pos
             reader.Close();
             dataStream.Close();
             response.Close();
+            try
+            {
+                if (ConnectionString != null)
+                {
+                    using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString))
+                    {
+                        connection.Open();
+                        dynamic ProductApiStringResponce = JObject.Parse(responseFromServer);
+                        string command = "insert into audit values('" + json + "','" + ProductApiStringResponce.responseCode + "')";
+                        NpgsqlCommand INSERT_c_invoicepaymentdetails = new NpgsqlCommand(command, connection);
+                        INSERT_c_invoicepaymentdetails.ExecuteNonQuery();
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message);
+            }
 
             return responseFromServer;
         }
