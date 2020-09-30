@@ -109,7 +109,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_CustomersList_GetData = new NpgsqlCommand("select c_bpartner_id,name from  c_bpartner  where ad_org_id=" + _OrgId + "  and iscustomer='Y' ;", connection);//
+                NpgsqlCommand cmd_CustomersList_GetData = new NpgsqlCommand("select c_bpartner_id,name from  c_bpartner  where ad_org_id=" + _OrgId + "  and iscustomer='Y' order by name ;", connection);//
                 NpgsqlDataReader _CustomersList_GetData = cmd_CustomersList_GetData.ExecuteReader();
                 m_CustomersList_items.Clear();
                 Customer_DropDown.ItemsSource = "";
@@ -221,7 +221,7 @@ namespace Restaurant_Pos.Pages
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
              
-                NpgsqlCommand cmd_Search_GetData = new NpgsqlCommand("select c_bpartner_id as id,name,image from  c_bpartner  where ad_org_id=" + _OrgId + "  and iscustomer='Y' order by name offset '" + pageNo * itemPerpage + "' ROWS FETCH NEXT '" + itemPerpage + "'  ROWS ONLY  ;", connection);//
+                NpgsqlCommand cmd_Search_GetData = new NpgsqlCommand("select c_bpartner_id as id,name,image from  c_bpartner  where ad_org_id=" + _OrgId + "  and iscustomer='Y' order by name offset '" + pageNo * itemPerpage + "' ROWS FETCH NEXT '" + itemPerpage + "'  ROWS ONLY ;", connection);//
                 Npgsql.NpgsqlDataAdapter dacust = new NpgsqlDataAdapter(cmd_Search_GetData);
                 DataTable dtcust = new DataTable();
                 dacust.Fill(dtcust);

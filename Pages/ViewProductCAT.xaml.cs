@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.Web.UI.WebControls;
 using Microsoft.Win32;
 using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
 
 namespace Restaurant_Pos.Pages
 {
@@ -74,6 +75,16 @@ namespace Restaurant_Pos.Pages
         }
         #endregion
 
+
+        #region validation
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtName.Text = Regex.Replace(txtName.Text, "[^a-zA-Z ]+", "");
+
+        }
+        
+        #endregion
+
         #region Bind Data Function
         public void BindProductCATLst()
         {
@@ -83,7 +94,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_ProductCATLst_GetData = new NpgsqlCommand("select m_product_category_id,name from m_product_category  where ad_org_id=" + _OrgId + " ;", connection);//
+                NpgsqlCommand cmd_ProductCATLst_GetData = new NpgsqlCommand("select m_product_category_id,name from m_product_category  where ad_org_id=" + _OrgId + "order by name ;", connection);//
                 NpgsqlDataReader _ProductCATLst_GetData = cmd_ProductCATLst_GetData.ExecuteReader();
                 _m_ProductCATLst.Clear();
                 _m_ProductCATLst.Add(new m_ProductCATLst()
@@ -152,7 +163,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_ProductCATList_GetData = new NpgsqlCommand("select m_product_category_id as id,name,image from m_product_category  where ad_org_id=" + _OrgId + " ;", connection);//
+                NpgsqlCommand cmd_ProductCATList_GetData = new NpgsqlCommand("select m_product_category_id as id,name,image from m_product_category  where ad_org_id=" + _OrgId + " order by name ;", connection);//
                 NpgsqlDataAdapter daPCList = new NpgsqlDataAdapter(cmd_ProductCATList_GetData);
                 DataTable dtPCList = new DataTable();
                 daPCList.Fill(dtPCList);

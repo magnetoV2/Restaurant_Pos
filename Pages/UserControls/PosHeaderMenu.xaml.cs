@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,31 @@ namespace Restaurant_Pos.Pages.UserControls
             }
         }
 
-      
+        static string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+        string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
+        Process p;
+        private void Keyboard_plysical_Click(object sender, RoutedEventArgs e)
+        {
+            p.Close();
+            Process[] oskProcessArray = Process.GetProcessesByName("TabTip");
+            foreach (Process onscreenProcess in oskProcessArray)
+            {
+                onscreenProcess.Kill();
+            }
+
+        }
+
+        private void Keyboard_virtual_Click(object sender, RoutedEventArgs e)
+        {
+
+            Process[] oskProcessArray = Process.GetProcessesByName("TabTip");
+            foreach (Process onscreenProcess in oskProcessArray)
+            {
+                onscreenProcess.Kill();
+            }
+
+            p = System.Diagnostics.Process.Start(onScreenKeyboardPath);
+
+        }
     }
 }

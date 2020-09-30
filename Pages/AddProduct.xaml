@@ -38,6 +38,7 @@
             <Image x:Name="product_image" HorizontalAlignment="Left"  Width="109" Height="64"/>
         </StackPanel>
         <Button  Name="btnupload" Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Click="Btnupload_Click"  Margin="282,94,184,32" Width="156" Grid.RowSpan="2" >Upload</Button>
+        <Label  Content="Use Ctl to select multiple images" Grid.Column="0" Grid.Row="1" Margin="90,12,0,0" Foreground="Red" HorizontalAlignment="Center"></Label>
 
 
         <StackPanel Margin="100,38,0,-148" Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Left" Width="500">

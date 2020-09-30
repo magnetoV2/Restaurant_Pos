@@ -15,6 +15,15 @@
                 <TextBlock Height="29" Text="Search(F6)" Foreground="White" Margin="30,-90"></TextBlock>
             </StackPanel>
 
+            <Button Name="keyboard_virtual" Click="Keyboard_virtual_Click"  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,450,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/keyboard_virtual.png" Margin="-20" Height="20" Width="30"  />
+
+            </Button>
+            <Button Name="keyboard_plysical" Click="Keyboard_plysical_Click" Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,500,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/keyboard_physical.png" Margin="-20" Height="20" Width="30"  />
+
+            </Button>
+
             <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,400,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Image Source="C:/pos/component/Resources/Images/Icons/home.png" Margin="-20" Height="20" Width="20"  />
 

@@ -32,7 +32,7 @@
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Search Key" Margin="5,0,0,0"/>
             <TextBox x:Name="txtSearchKey"   Style="{StaticResource Regular_TextBox}"    Margin="5"  HorizontalAlignment="Left" Width="372"  />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Name" Margin="5,0,0,0"/>
-            <TextBox x:Name="txtName"  Style="{StaticResource Regular_TextBox}"  Margin="5"   HorizontalAlignment="Left" Width="372"  />
+            <TextBox x:Name="txtName" TextChanged="txtName_TextChanged" Style="{StaticResource Regular_TextBox}"  Margin="5"   HorizontalAlignment="Left" Width="372"  />
 
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Category Colour" Margin="5,0,0,0"/>
             <TextBox x:Name="txtCategory"  Style="{StaticResource Regular_TextBox}"   Margin="5"  HorizontalAlignment="Left" Width="372" />

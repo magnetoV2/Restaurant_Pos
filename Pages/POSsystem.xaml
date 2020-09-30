@@ -27,21 +27,41 @@
             <StackPanel   Margin="0,30,0,0" Grid.RowSpan="3" Grid.Column="0" Grid.Row="0"  Background="White" >
                 <Button Margin="0,20,0,20" Width="180" BorderThickness="0" TabIndex="0" Background="#2c3e50"  Foreground="White" BorderBrush="White" FontSize="20"   Click="Button_Click"  Height="45"  Content="Take Away"/>
 
-                <ListBox Height="500" ScrollViewer.CanContentScroll="True" Name="Product_ListBox" Background="#f5f5f5" SelectionChanged="Product_ListBox_SelectionChanged" HorizontalAlignment="Left" BorderThickness="0"  >
+                <ListBox Height="500" ScrollViewer.CanContentScroll="True" Background="#f5f5f5"   Name="Product_ListBox"  SelectionChanged="Product_ListBox_SelectionChanged" HorizontalAlignment="Left" BorderThickness="0"  >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True" >
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Background" Value="Blue" />
+                                  
+                                </Trigger>
+                            </Style.Triggers>
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                            </Style.Resources>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
-                        <DataTemplate >
+                        <DataTemplate>
                             <Border  CornerRadius="20" Height="150" Background="White" BorderThickness="1" >
-                                <StackPanel Orientation="Horizontal"  >
-
-                                    <Ellipse Height="80" Width="80"   Stroke="LightGray"  StrokeThickness="1">
+                                <StackPanel Orientation="Horizontal"  >                                   
+                                    <Ellipse Height="80" Width="80"  HorizontalAlignment="Center"  VerticalAlignment="Center" Stroke="LightGray" Margin="80,-40,0,0"   StrokeThickness="1">
                                         <Ellipse.Fill>
                                             <ImageBrush  ImageSource="{Binding ImgPath}"  />
                                         </Ellipse.Fill>
                                     </Ellipse>
 
                                     <Label  Content="{Binding id}"  Margin="0,-20,0,0" Visibility="Hidden"  FontSize="18" FontWeight="Light"   Width="100" Height="30" HorizontalAlignment="Left"/>
-                                    <TextBlock  Text="{Binding Name}"  FontSize="15"  FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" />
-                                </StackPanel>
+                                    <TextBlock  Margin="-290,70,0,0" FontSize="15" TextAlignment="Center" FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" >
+                                        <TextBlock.Text >
+                                            <MultiBinding StringFormat=" {0} ({1}) ">
+                                                <Binding Path="Name" />
+                                                <Binding Path="count" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                 </StackPanel>
                             </Border>
 
                         </DataTemplate>
@@ -58,6 +78,21 @@
 
                 </StackPanel>
                 <ListBox BorderThickness="1" Height="500" Background="White" HorizontalAlignment="Left" MinWidth="200"   SelectionChanged="ProductCat_ListBox_SelectionChanged"  Name="productCat_ListBox">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True" >
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Background" Value="Blue" />
+
+                                </Trigger>
+                            </Style.Triggers>
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                            </Style.Resources>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
                     <ListBox.ItemTemplate>
                         <DataTemplate >
                             <Border  CornerRadius="10"  Background="White"  BorderThickness="1" >
@@ -69,6 +104,7 @@
 
                                     <Label  Content="{Binding id}"  Margin="0,-20,0,0" Visibility="Hidden"  FontSize="18" FontWeight="Light"   Width="100" Height="30" HorizontalAlignment="Left"/>
                                     <TextBlock  Text="{Binding Name}" Margin="-95,10,0,0" FontSize="18" FontFamily="roboto"   Height="30" HorizontalAlignment="Left" />
+                                    
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
@@ -116,9 +152,10 @@
                     <StackPanel Width="200" HorizontalAlignment="Left"  Orientation="Vertical">
                         <Label Name="lblitems"  FontSize="20" FontWeight="Bold" Height="40" Foreground="White"   Width="161" RenderTransformOrigin="1.457,0.684"/>
 
-                        <Button Click="TxtTotalDiscountPer_Click" Margin="-70,0,0,0"  Foreground="White"  Name="txtTotalDiscountPer" Padding="0,5" Background="Orange" Height="41" Width="60" VerticalAlignment="Center" ></Button>
+                        <Button Click="TxtTotalDiscountPer_Click" Margin="-70,0,0,0"  Foreground="White"  Name="txtTotalDiscountPer" Padding="0,5" Background="Orange" Height="41" Width="100" VerticalAlignment="Center" ></Button>
 
-                        <Label Content="(F4)" FontSize="18" Margin="-70,0,0,0"   Width="61" Height="40" Foreground="White"  />
+
+                        <Label Content="(Alt+T)" FontSize="18" Margin="-70,0,0,0"   Width="70" Height="40" Foreground="White"  />
 
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" Margin="90,0,0,0" Orientation="Vertical">
@@ -132,7 +169,22 @@
             
             </StackPanel>
             <ListBox x:Name="price_ListBox"  Grid.Column="3" Grid.Row="1"  Background="#f5f5f5"  Margin="0,40,0,0" HorizontalAlignment="Left">
-                    <ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True" >
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Background" Value="Blue" />
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        </Style.Resources>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderThickness="1"  CornerRadius="10" Background="White">
                                 <StackPanel>
@@ -143,7 +195,11 @@
                                     </StackPanel>
                                     <StackPanel  Orientation="Horizontal">
                                         <CheckBox ToolTip="{Binding Name}" Click="CheckBox_Click"  Visibility="{Binding checkbox}"></CheckBox>
-                                        <Button  Content="{Binding Path=discountAmt}" Name="btnPer" ToolTip="{Binding Name}" Click="BtnPer_Click"  Margin="10,10,60,10" Padding="0,5" Background="Orange" Height="30" Width="40"  VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                                    <Button   Name="btnPer" ToolTip="{Binding Name}" Click="BtnPer_Click"  Margin="10,10,40,10" Padding="0,5" Background="Orange" Height="30" Width="70"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Button.Content>
+                                            <TextBlock Text="{Binding discountAmt, StringFormat=QR {0}}"/>
+                                        </Button.Content>
+                                    </Button>
                                     <Button Name="btnNotesEdit" ToolTip="{Binding Name}" Click="BtnNotesEdit_Click" Margin="90,10,10,10" Padding="0,5" Background="Gray" Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <Image Source="C:/pos/component/Resources/Images/Icons/edit.png" Height="15" Width="15" />
                                         </Button>
@@ -224,9 +280,23 @@
             <!--HOld Orders-->
             
                 <ListBox Name="onHoldOrders" Visibility="Hidden" Background="white"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"  SelectionChanged="OnHoldOrders_SelectionChanged" >
-                
-                
-                    <ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True" >
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Background" Value="Blue" />
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        </Style.Resources>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+
+                <ListBox.ItemTemplate>
                    
                         <DataTemplate>
                             <Border  CornerRadius="10"  Background="White" HorizontalAlignment="Stretch" BorderThickness="1" >

@@ -172,8 +172,7 @@ namespace Restaurant_Pos.Pages
                     {
                         id = int.Parse(_TakeAwayProduct_GetData["m_product_id"].ToString()),
                         Name = _TakeAwayProduct_GetData["name"].ToString(),
-                        ImgPath = _TakeAwayProduct_GetData["image"].ToString()
-
+                        ImgPath = _TakeAwayProduct_GetData["image"].ToString()                        
                     });
                 }
 
@@ -223,8 +222,8 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_TakeAwayProductCAT_GetData = new NpgsqlCommand("select m_product_category_id,name,image from m_product_category  where ad_org_id=" + _OrgId + "  ;", connection);//
-                NpgsqlDataReader _TakeAwayProductCAT_GetData = cmd_TakeAwayProductCAT_GetData.ExecuteReader();
+                NpgsqlCommand cmd_TakeAwayProductCAT_GetData = new NpgsqlCommand("select c.m_product_category_id,c.name,c.image,count(p.m_product_category_id) from  m_product_category c left join m_product p on c.m_product_category_id=p.m_product_category_id where c.ad_org_id=" + _OrgId + " group by c.name,c.m_product_category_id,c.image ;", connection);//
+                NpgsqlDataReader _TakeAwayProductCAT_GetData = cmd_TakeAwayProductCAT_GetData.ExecuteReader();               
                 m_TakeAwayProductCAT.Clear();
                 _m_TakeAwayProduct.Clear();
                 Product_ListBox.ItemsSource = "";
@@ -236,8 +235,8 @@ namespace Restaurant_Pos.Pages
                     {
                         id = int.Parse(_TakeAwayProductCAT_GetData["m_product_category_id"].ToString()),
                         Name = _TakeAwayProductCAT_GetData["name"].ToString(),
-                        ImgPath = _TakeAwayProductCAT_GetData["image"].ToString()
-
+                        ImgPath = _TakeAwayProductCAT_GetData["image"].ToString(),                     
+                        count= _TakeAwayProductCAT_GetData["count"].ToString()
                     });
                 }
 
@@ -255,7 +254,7 @@ namespace Restaurant_Pos.Pages
                     this.Dispatcher.Invoke(() =>
                     {
 
-                        Product_ListBox.ItemsSource = m_TakeAwayProductCAT;
+                        Product_ListBox.ItemsSource = m_TakeAwayProductCAT.OrderBy(item => item.Name);
                     });
                 }
             }
@@ -554,9 +553,8 @@ namespace Restaurant_Pos.Pages
             _m_TakeAwayProductRS.Insert(SelectedItemIndex, SelectedItem);
         }
         private void BtnNotesEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-            selectedItemForEditNotes = (sender as Button).ToolTip.ToString();
+        {          
+            selectedItemForEditNotes = (sender as Button).ToolTip.ToString();                     
             MyPopupNotes.IsOpen = true;
             lblItemName.Content = "items";
           
@@ -605,9 +603,8 @@ namespace Restaurant_Pos.Pages
         private void BtnPer_Click(object sender, RoutedEventArgs e)
         {
             //   this.Visibility = Visibility.Collapsed;
-            MyPopupLineDisc.IsOpen = true;
-
-            string ItemName = (sender as Button).ToolTip.ToString();
+            MyPopupLineDisc.IsOpen = true;            
+            string ItemName = (sender as Button).ToolTip.ToString();           
             lblitemName.Content = ItemName;
             selectItemForLineDiscount = ItemName;
 
@@ -1555,11 +1552,11 @@ namespace Restaurant_Pos.Pages
                 total_discount_amount += element.discountAmt;
             }
 
-            lblRS.Content = payableAmount.ToString();
+            lblRS.Content = "QR " + String.Format("{0:N}", payableAmount);
             lblitems.Content = totalItems.ToString() + " ITEMS";
-            DiscountAmt.Content = totalAmount - payableAmount;
-            txtTotalDiscountPer.Content = (total_discount_amount).ToString();
-            //txtOpeningBalanceDisc.Text = txtTotalDiscountPer.Text;
+            DiscountAmt.Content = "QR " + String.Format("{0:N}", totalAmount - payableAmount);
+            txtTotalDiscountPer.Content = "QR " + String.Format("{0:N}", total_discount_amount).ToString();
+
         }
 
 
@@ -1570,6 +1567,7 @@ namespace Restaurant_Pos.Pages
 
         private void Product_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             dynamic PC = Product_ListBox.SelectedItem as dynamic;
             if (PC == null)
             {
@@ -1599,6 +1597,7 @@ namespace Restaurant_Pos.Pages
                 if (lblInvoiceNo.Content == null || lblInvoiceNo.Content.ToString() == "")
                 {
                     BindTakeAwayProductRS(id);
+                    selectedItemForEditNotes = PC.Name;
                 }
                 else
                 {
@@ -1710,26 +1709,28 @@ namespace Restaurant_Pos.Pages
 
 
                     paymentPopup.IsOpen = true;
-                    TotalAmt.Content = totalAmount;
-                    //DiscountAmt.Content =totalAmount- payableAmount;
-                    double PayAmt = payableAmount;
-                    PayableAmt.Content = payableAmount;
-                    BalanceAmt.Content = payableAmount;
+                    TotalAmt.Content = "QR " + String.Format("{0:N}", totalAmount);
+                    PayableAmt.Content = "QR " + String.Format("{0:N}", payableAmount);
+                    BalanceAmt.Content = "QR " + String.Format("{0:N}", payableAmount);
                     txtBal.Text = payableAmount.ToString();
+
 
 
                 }
                 if (e.Key.ToString().ToUpper() == "F5")
                 {
-                    BtnNotesEdit_Click(sender, e);
+                    MyPopupNotes.IsOpen = true;
+                    lblItemName.Content = "items";
                 }
-                if (e.Key.ToString().ToUpper() == "F4")
+                //if (e.Key.ToString().ToUpper() == "Ctrl+D")
+                //{
+                //    TxtTotalDiscountPer_Click(sender, e);
+                //}
+                if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
                 {
-                    TxtTotalDiscountPer_Click(sender, e);
-                }
-                if (e.Key.ToString().ToUpper() == "Alt+D")
-                {
-                    BtnPer_Click(sender, e);
+                    
+                    MyPopupTotalDisc.IsOpen = true;
+                    billAmt.Content = lblRS.Content;
                 }
                 if (e.Key.ToString().ToUpper() == "F3")
                 {
@@ -1754,11 +1755,27 @@ namespace Restaurant_Pos.Pages
                 if (e.Key.ToString().ToUpper() == "F6")
                 {
                     txtCatSearch.Focus();
-                }
+                }               
                 if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
                 {
 
                     Split1_Click(sender, e);
+                }
+                if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
+                {
+
+                    MyPopupTotalDisc.IsOpen = true;
+                    billAmt.Content = lblRS.Content;
+                }
+                if (e.Key == Key.I && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                {
+
+                    DineIn_Click(sender, e);
+                }
+                if (e.Key == Key.O && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                {
+
+                    Order_Click(sender, e);
                 }
             }
             catch (Exception ex)

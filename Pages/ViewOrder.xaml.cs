@@ -55,7 +55,7 @@ namespace Restaurant_Pos.Pages
 
             NpgsqlConnection connection = new NpgsqlConnection(connstring);
             connection.Open();
-            NpgsqlCommand cmd_ViewOrder_GetData = new NpgsqlCommand("select ic.c_invoice_id ,orderid,c_kotline_id,to_char(ic.created, 'DD-Mon-YYYY HH12:MI:SS')As Date , apu.Name, productname, qtyinvoiced, saleprice, is_onhold, is_canceled, is_completed from C_invoice ic inner join C_invoiceLine icl on ic.c_invoice_id = icl.c_invoice_id inner join ad_user_pos apu on ic.createdby = apu.ad_user_id ;", connection);//
+            NpgsqlCommand cmd_ViewOrder_GetData = new NpgsqlCommand("select kl.c_invoice_id ,kl.c_invoice_id as orderid,kl.kotno as c_kotline_id,to_char(ic.created, 'DD-Mon-YYYY HH12:MI:SS')As Date , apu.Name, icl.productname, icl.qtyinvoiced, icl.saleprice, is_onhold, is_canceled, is_completed from c_kotline kl  inner  join C_invoice ic on kl.c_invoice_id=ic.c_invoice_id inner join C_invoiceLine icl on ic.c_invoice_id = icl.c_invoice_id inner join ad_user_pos apu on ic.createdby = apu.ad_user_id where  icl.productname=kl.productname group by ic.c_invoice_id ,icl.c_invoice_id ,ic.createdby,apu.ad_user_id,kl.c_invoice_id ,kl.kotno,apu.Name,icl.productname,icl.qtyinvoiced, icl.saleprice, is_onhold,is_canceled, is_completed, kl.m_terminal_id", connection);//            
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd_ViewOrder_GetData);
             DataTable dt = new DataTable();
             da.Fill(dt);

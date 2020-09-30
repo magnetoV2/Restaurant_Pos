@@ -1,0 +1,223 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+    
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Restaurant_Pos.Pages.ViewUser"
+    
+      mc:Ignorable="d"
+      Title="ViewUser"  
+        d:DesignHeight="670" d:DesignWidth="800">
+
+    <Grid  KeyUp="Grid_KeyUp"  HorizontalAlignment="Left" >
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition  Height="40"/>
+            <RowDefinition Height="57"/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="203*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="251"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="343*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <local:Header_Menu Grid.ColumnSpan="13" Grid.RowSpan="8" Margin="0,0,-500,0" ></local:Header_Menu>
+
+
+        <TextBlock Padding="7" Margin="33,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Left"   Grid.Column="1" FontSize="21" FontFamily="times new roman" RenderTransformOrigin="0.403,1.184" Grid.Row="1" ><Run Text="Users"/></TextBlock>
+
+        <Button Style="{StaticResource EditButton}"  x:Name="btn_edit" Click="Btn_edit_Click" Grid.Column="12" Margin="34.333,21,-165.667,34" RenderTransformOrigin="1.092,0.425" Width="Auto" Grid.Row="1" Grid.RowSpan="2"  />
+
+        <StackPanel Grid.Column="7" Grid.Row="1"/>
+        <Button    x:Name="btn_Add_Category" Style="{StaticResource AddButton}"    BorderThickness="0"  Grid.Column="12" Grid.Row="1" Margin="195.333,20,-308.667,0" Click="Btn_Add_Category_Click" VerticalAlignment="Top" Height="40"   Content="Add User" Grid.RowSpan="2" Width="Auto"   />
+
+        <StackPanel Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="4"/>
+        <Button x:Name="btnCancel" Style="{StaticResource CancelButton}"  Background="Orange" FontSize="16" Grid.Column="12" Grid.Row="5" Margin="134,2.333,-236.404,37.667"    Click="BtnCancel_Click" Width="Auto" Content="Cancel" />
+
+
+        <StackPanel Grid.Column="9" Grid.Row="6" Grid.ColumnSpan="4" Margin="0,0,10,0" Height="36" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122"/>
+        <Button x:Name="btnSave" Style="{StaticResource SaveButton}"     BorderThickness="0"     Grid.Column="12"  Grid.Row="5" Margin="266,2.333,-400.404,37.667" Click="BtnSave_Click" Width="Auto" Content="Save" />
+
+        <TextBox Grid.Column="1" Grid.Row="1"  x:Name="product_Search" Style="{StaticResource Regular_SearchTextBox}"   KeyUp="Product_Search_KeyUp"  TextAlignment="Center"  Tag="Search"  Margin="0,48,0,6" Grid.RowSpan="2"  VerticalAlignment="Center" Grid.ColumnSpan="2" Height="46"/>
+
+        <StackPanel Grid.Column="2" Grid.RowSpan="3" Margin="0,10,0,42">
+            <Image x:Name="userimg" Margin="20,0,0,0" Width="100" Height="37"   HorizontalAlignment="Left" />
+
+
+        </StackPanel>
+        <Border x:Name="User_DropDown_br"
+                    CornerRadius ="25"
+                    Margin="0,10,0,0" 
+                    BorderThickness="0.7,1,0.7,1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="45"
+                BorderBrush="Gray"  Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="460">
+
+            <ComboBox x:Name="User_DropDown"
+                        SelectionChanged="User_DropDown_SelectionChanged"
+                       FontSize="20"
+                      BorderBrush="{x:Null}"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                   Height="45"
+                       Background="White" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.571" Margin="18,0,0,0" HorizontalAlignment="Left" Width="411">
+
+                <ComboBox.ItemTemplate >
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <TextBlock Text="{Binding id}" Visibility="Hidden"  />
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Name}" IsHitTestVisible="False" FontSize="20" FontFamily="{StaticResource OoredooArabic-Regular}" />
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Border>
+
+        <ListBox Grid.Column="1"   Background="White" BorderThickness="0" Margin="0,26,0,0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="User_ListBox" SelectionChanged="User_ListBox_SelectionChanged" Grid.ColumnSpan="2" Width="490" Height="380" Grid.RowSpan="2" >
+            <ListBox.ItemTemplate>
+                <DataTemplate  >
+                    <Border  CornerRadius="20">
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Ellipse Height="40" Width="40" Stroke="LightGray" StrokeThickness="1">
+                                <Ellipse.Fill>
+                                    <ImageBrush  ImageSource="{Binding imgpath}"  />
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <Label  Content="{Binding ad_user_id}"  Margin="0,-20,0,0"  FontSize="18" FontWeight="Light"   Width="100" Height="30" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="{Binding name}" Margin="-95,30,0,0" FontSize="18" FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+        </ListBox>
+        <StackPanel Margin="68,0,0,0" RenderTransformOrigin="0.5,0.5" Height="97" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="1">
+            <Border  CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,0" >
+                <Image   x:Name="editimage"    Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5"></Image>
+            </Border>
+        </StackPanel>
+        <Button  Name="btnupload" Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Click="Btnupload_Click"  Margin="24,32,0,22" Width="156" Grid.RowSpan="2" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="6" RenderTransformOrigin="0.481,0.152" >Upload</Button>
+
+        <StackPanel Margin="50,40,-105,0" Grid.Column="3" Height="468" VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="10" Grid.Row="2">
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="QID" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtQID"   Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="468"   Margin="5,0,0,0"  />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Name" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtName"    Style="{StaticResource Regular_TextBox}"  FontFamily="roboto" Width="468"   Margin="5,0,0,0" HorizontalAlignment="Left"  />
+
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="UserName" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtUserName"  Style="{StaticResource Regular_TextBox}"   Margin="10,0,0,0"  />
+
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Password" Margin="5,0,250,0"/>
+            <TextBox x:Name="txtPassword"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0" />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="MobileNo" Margin="248,-120,10,0" Height="26"/>
+            <TextBox x:Name="txtMobile"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="225"   Margin="248,-50,0,0"    />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Email" Margin="4,0,230,0" Height="35"/>
+            <TextBox x:Name="txtEmail"  Style="{StaticResource Regular_TextBox}"    HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Role" Margin="273,-120,0,0" Height="35"  />
+            <Border x:Name="Role_DropDown_br"
+                    CornerRadius ="25"
+                    Margin="248,-50,0,0" 
+                    Height="46"
+                    Width="225"
+                    HorizontalAlignment="Left"
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="Gray" Grid.Row="3" Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ComboBox x:Name="Role_DropDown"
+                      FontSize="16"
+                      BorderBrush="Gray"
+                     
+                      Padding="-50,5"
+                      SelectedIndex="0"
+                      BorderThickness="0,0,0,0"
+                      Height="35"
+                     
+                       Background="White" Margin="29,0,28,0">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding RoleID}" Visibility="Hidden"  />
+
+                                <TextBlock Text="{Binding Name}" IsHitTestVisible="False" FontSize="16"  FontFamily="{StaticResource OoredooArabic-Regular}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Border>
+
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Address" Margin="5,0,250,0"/>
+            <TextBox x:Name="txtAddress" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="WareHouse" Margin="248,-120,0,0" Height="26"/>
+            <Border x:Name="Warehouse_DropDown_br"
+                    CornerRadius ="25"
+                    Margin="248,-50,0,0" 
+                    Height="45"
+                    Width="225"
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="Gray" Grid.Row="3" Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ComboBox x:Name="Warehouse_DropDown"
+                      FontSize="16"
+                      BorderBrush="Gray"
+                      Padding="0,5"
+                      SelectedIndex="0"
+                      BorderThickness="0,0,0,0"
+                      Height="35"
+                     
+                       Background="White" Margin="29,0,28,0">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding WarehouseId}" Visibility="Hidden"  />
+
+                                <TextBlock Text="{Binding WarehouseName}"  FontSize="16" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Border>
+            <TextBox x:Name="txtUserID" Visibility="Hidden"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Height="24" HorizontalAlignment="Left" Width="372"  />
+
+
+
+        </StackPanel>
+
+        <Image Grid.Column="1" Source="C:/pos/component/Resources/Images/Icons/left-arrow.png" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.771,0.381" Grid.Row="1"/>
+
+    </Grid>
+</Page>
+

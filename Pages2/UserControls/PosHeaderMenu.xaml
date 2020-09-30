@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Restaurant_Pos.Pages.UserControls.PosHeaderMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="193*"/>
+            <ColumnDefinition Width="207*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Name="stMenu" HorizontalAlignment="Left" Height="60" Background="#FF0077CC"  Margin="1,-40,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <StackPanel Height="70" Margin="50,0,856,0" >
+
+                <Image Source="C:/pos/component/Resources/Images/Icons/searchWhite.png" HorizontalAlignment="Left" Margin="0,20,0,0" Height="20" Width="20" />
+                <TextBlock Height="29" Text="Search(F6)" Foreground="White" Margin="30,-90"></TextBlock>
+            </StackPanel>
+            <Button Name="keyboard_virtual" Click="Keyboard_virtual_Click"  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,450,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/keyboard_virtual.png" Margin="-20" Height="20" Width="30"  />
+
+            </Button>
+            <Button Name="keyboard_plysical" Click="Keyboard_plysical_Click" Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,500,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/keyboard_physical.png" Margin="-20" Height="20" Width="30"  />
+
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,400,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/home.png" Margin="-20" Height="20" Width="20"  />
+
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,330,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/bike.png" Margin="-20" Height="20" Width="20"  />
+
+            </Button>
+            <Button Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,260,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/key.png" Margin="-20" Height="20" Width="20"  />
+
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-75,190,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/cricle.png" Margin="-20" Height="20" Width="20"  />
+
+            </Button>
+
+            <Button  Style="{StaticResource MenuButton}" Background="#FF0077CC" Margin="195,-75,120,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/setting.png" Height="20" Width="20" />
+
+            </Button>
+
+            <Button Style="{StaticResource MenuButton}" BorderBrush="#FF0077CC"  Name="btnmenu"  Background="#FF0077CC" Margin="195,-75,50,0"  HorizontalAlignment="Right" VerticalAlignment="Center"  Click="Btnmenu_Click" RenderTransformOrigin="0.68,-0.75">
+                <StackPanel>
+                    <Image Source="C:/pos/component/Resources/Images/Icons/menubar.png" Height="20" Width="20" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Popup Name="MenuPopup"
+                 Placement="Center"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Height="Auto" 
+                   VerticalOffset="-40"
+               HorizontalOffset="500"
+                   AllowsTransparency="True" Grid.Column="1">
+            <local:Menu x:Name="ucMenu" HorizontalAlignment="Right" VerticalAlignment="Top"    Width="400" Height="649"   />
+
+        </Popup>
+
+    </Grid>
+</UserControl>

@@ -80,7 +80,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_TableLst_GetData = new NpgsqlCommand("select m_table_id,name from  m_table  where ad_org_id=" + _OrgId + " ;", connection);//
+                NpgsqlCommand cmd_TableLst_GetData = new NpgsqlCommand("select m_table_id,name from  m_table  where ad_org_id=" + _OrgId + "order by name ;", connection);//
                 NpgsqlDataReader _TableLst_GetData = cmd_TableLst_GetData.ExecuteReader();
                 _m_TableWise.Clear();
                 Table_DropDown.ItemsSource = "";
@@ -151,7 +151,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_TableList_GetData = new NpgsqlCommand("select m_table_id,name from  m_table  where ad_org_id=" + _OrgId + " ;", connection);//
+                NpgsqlCommand cmd_TableList_GetData = new NpgsqlCommand("select m_table_id,name from  m_table  where ad_org_id=" + _OrgId + "order by name ;", connection);//
                 NpgsqlDataAdapter daTableList = new NpgsqlDataAdapter(cmd_TableList_GetData);
                 DataTable dtTableList = new DataTable();
                 daTableList.Fill(dtTableList);

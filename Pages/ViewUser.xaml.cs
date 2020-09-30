@@ -21,6 +21,7 @@ using System.Data;
 using System.Windows.Media.Imaging;
 using Restaurant_Pos.Pages.UserControls;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace Restaurant_Pos.Pages
 {
@@ -75,6 +76,34 @@ namespace Restaurant_Pos.Pages
             btnCancel.Visibility = Visibility.Hidden;
             btnSave.Visibility = Visibility.Hidden;
             btnupload.Visibility = Visibility.Hidden;
+
+        }
+        #endregion
+
+        #region validation
+        private void txtQID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtQID.Text = Regex.Replace(txtQID.Text, "[^0-9]+", "");
+
+        }
+        private void txtMobile_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtMobile.Text = Regex.Replace(txtMobile.Text, "[^0-9]+", "");
+
+        }
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtEmail.Text = Regex.Replace(txtEmail.Text, " ", "");
+
+        }
+        private void txtUserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtUserName.Text = Regex.Replace(txtUserName.Text, " ", "");
+
+        }
+        private void txtAddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtAddress.Text = Regex.Replace(txtAddress.Text, " ", "");
 
         }
         #endregion
@@ -211,7 +240,7 @@ namespace Restaurant_Pos.Pages
                     // connection.Close();
                     connection.Open();
                     //this.Dispatcher.Invoke(() => { LoginProcessingText.Text = "Process: Getting All Warehouse Present"; });
-                    NpgsqlCommand cmd_User_GetData = new NpgsqlCommand("select ad_user_id,name from ad_user_pos  WHERE ad_org_id =" + _OrgId + "  ;", connection);//
+                    NpgsqlCommand cmd_User_GetData = new NpgsqlCommand("select ad_user_id,name from ad_user_pos  WHERE ad_org_id =" + _OrgId + " order by name ;", connection);//
                     NpgsqlDataReader _cmd_User_GetData = cmd_User_GetData.ExecuteReader();
                 m_user_items.Add(new M_user()
                 {
@@ -274,7 +303,7 @@ namespace Restaurant_Pos.Pages
 
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
-                NpgsqlCommand cmd_User_GetData = new NpgsqlCommand("select ad_user_id,name,imgpath  from ad_user_pos  where ad_org_id=" + _OrgId+ " ;", connection);//
+                NpgsqlCommand cmd_User_GetData = new NpgsqlCommand("select ad_user_id,name,imgpath  from ad_user_pos  where ad_org_id=" + _OrgId+ " order by name;", connection);//
                 NpgsqlDataAdapter daUser = new NpgsqlDataAdapter(cmd_User_GetData);
                 DataTable dtUser = new DataTable();
                 daUser.Fill(dtUser);
@@ -520,7 +549,12 @@ namespace Restaurant_Pos.Pages
                     MessageBox.Show("Please Enter The Email ! ");
                     return;
                 }
-              
+                if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
+                {
+                    MessageBox.Show("Please Enter Valid Email ! ");
+                    return;
+                }
+
                 if (txtMobile.Text == String.Empty)
                 {
                     txtMobile.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString(CoustomColors.CartRedBrush);

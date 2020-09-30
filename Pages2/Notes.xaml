@@ -1,0 +1,29 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.Notes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Notes">
+
+    <Grid>
+        <Border  HorizontalAlignment="Center" VerticalAlignment="Top"  BorderBrush="Gray" CornerRadius="20"  BorderThickness="3" Width="470" Height="349" Margin="165,20,165,0">
+            <Grid Margin="-2,0" Name="grid1" Height="358" VerticalAlignment="Top" >
+                <Label Name="lblItemName" FontSize="20" HorizontalAlignment="Left" Margin="43,60,0,0" VerticalAlignment="Top" Width="358" RenderTransformOrigin="0.529,1.462" Height="46"/>
+                <Label Content="Notes" FontWeight="Bold"  HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" Width="126"/>
+
+            </Grid>
+        </Border>
+        <Border Margin="203,143,199,155" Padding="5" BorderThickness="1" BorderBrush="Gray" Background="White" CornerRadius="20" RenderTransformOrigin="0.531,1.477">
+            <TextBox x:Name="txtnotes" FontSize="16"  TextAlignment="Center" BorderThickness="0" Height="138" Margin="6,-2,6,0" Tag="Type Hear"  RenderTransformOrigin="0.853,0.375" VerticalAlignment="Top"  />
+        </Border>
+        <Border Padding="5" BorderThickness="1" BorderBrush="Gray" Background="#0077cc" CornerRadius="20" Height="34" Margin="233,319,385,97">
+            <Button Content="Submit(F4)" BorderBrush="#0077cc" ForceCursor="False" Foreground="White" BorderThickness="0" Height="34"  Margin="18,0,0,-3" VerticalAlignment="Bottom"  Width="133" Background="#FF0077CC" RenderTransformOrigin="0.492,2.086" HorizontalAlignment="Left"  />
+        </Border>
+        <Border Padding="5" BorderThickness="1" BorderBrush="Gray" Background="#0077cc" CornerRadius="20" Height="34"  Margin="420,319,199,97">
+            <Button Content="Cancel(Esc)" BorderBrush="#0077cc" ForceCursor="False" Foreground="White" BorderThickness="0"  Margin="0,0,27,-6" VerticalAlignment="Top"  Height="28" Background="#FF0077CC" RenderTransformOrigin="0.492,2.086" HorizontalAlignment="Right" Width="114"  />
+        </Border>
+    </Grid>
+</Page>

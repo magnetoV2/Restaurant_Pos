@@ -11,6 +11,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,6 +61,15 @@ namespace Restaurant_Pos.Pages
         private dynamic AddCategoryApiStringResponce,
         addcategoryApiJOSNResponce;
         public dynamic AddCategoryApiJOSNResponce { get => addcategoryApiJOSNResponce; set => addcategoryApiJOSNResponce = value; }
+
+        #endregion
+
+        #region validation
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtName.Text = Regex.Replace(txtName.Text, "[^a-zA-Z ]+", "");
+
+        }
 
         #endregion
 

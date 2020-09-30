@@ -43,8 +43,8 @@ namespace Restaurant_Pos.Pages
         List<M_ItemCategory> m_ItemCategory_items = new List<M_ItemCategory>();
         public List<M_Terminals> m_Terminals_items = new List<M_Terminals>();
         public string connstring = PostgreSQL.ConnectionString;
+        List<String> imagePath = new List<String>();
 
-        string imagePath = "";
         public int Sequenc_id { get; set; }
         public int ProductSequenc_id { get; set; }
         private dynamic ProductApiStringResponce,
@@ -86,7 +86,7 @@ namespace Restaurant_Pos.Pages
                 // connection.Close();
                 connection.Open();
                 //this.Dispatcher.Invoke(() => { LoginProcessingText.Text = "Process: Getting All Warehouse Present"; });
-                NpgsqlCommand cmd_Terminal_GetData = new NpgsqlCommand("SELECT m_terminal_id,Name FROM  m_terminal  WHERE  ad_client_id = " + _clientId + "; ", connection);//
+                NpgsqlCommand cmd_Terminal_GetData = new NpgsqlCommand("SELECT m_terminal_id,Name FROM  m_terminal  WHERE  ad_client_id = " + _clientId + " ; ", connection);//
                 NpgsqlDataReader _Terminal_GetData = cmd_Terminal_GetData.ExecuteReader();
                 while (_Terminal_GetData.Read())
                 {
@@ -149,7 +149,7 @@ namespace Restaurant_Pos.Pages
                 // connection.Close();
                 connection.Open();
                 //this.Dispatcher.Invoke(() => { LoginProcessingText.Text = "Process: Getting All Warehouse Present"; });
-                NpgsqlCommand cmd_ItemCategory_GetData = new NpgsqlCommand("select m_product_category_id,name from  m_product_category  WHERE ad_org_id =" + _OrgId + " AND ad_client_id =" + _clientId + " ;", connection);//
+                NpgsqlCommand cmd_ItemCategory_GetData = new NpgsqlCommand("select m_product_category_id,name from  m_product_category  WHERE ad_org_id =" + _OrgId + " AND ad_client_id =" + _clientId + " order by name ;", connection);//
                 NpgsqlDataReader _ItemCategory_GetData = cmd_ItemCategory_GetData.ExecuteReader();
 
                 while (_ItemCategory_GetData.Read())
@@ -404,13 +404,26 @@ namespace Restaurant_Pos.Pages
 
                     connection.Open();
                     NpgsqlCommand INSERT_cmd_Product_Detail = new NpgsqlCommand("insert into m_product(id,ad_client_id,ad_org_id,m_product_id,Createdby,isactive, m_product_category_id, Name, barcode, uomid, uomname, image, sellonline, purchaseprice, Currentcostprice, max_qty, min_qty,PriceEditable,is_sync,m_terminal_id)    " + " " + "" + "" +
-                                                                                                  "VALUES(" + ProductSequenc_id + "," + _clientId + " ," + _OrgId + " ," + ProductSequenc_id + "," + _UserID + ",'Y','" + ItemId + "','" + txtName.Text + "','" + txtBarCode.Text + "','" + UOMId + "','" + UOMName + "','" + imagePath + "','" + SellOnline + "','" + txtPurchasePrice.Text + "','" + txtSalePrice.Text + "','" + txtMaximum.Text + "','" + txtMinimum.Text + "','" + PriceEditable + "','0','" + terminalID + "') ;", connection);
+                                                                                                  "VALUES(" + ProductSequenc_id + "," + _clientId + " ," + _OrgId + " ," + ProductSequenc_id + "," + _UserID + ",'Y','" + ItemId + "','" + txtName.Text + "','" + txtBarCode.Text + "','" + UOMId + "','" + UOMName + "','" + imagePath[0] + "','" + SellOnline + "','" + txtPurchasePrice.Text + "','" + txtSalePrice.Text + "','" + txtMaximum.Text + "','" + txtMinimum.Text + "','" + PriceEditable + "','0','" + terminalID + "') ;", connection);
                     INSERT_cmd_Product_Detail.ExecuteNonQuery();
+                    connection.Close();
+                    connection.Open();
 
+                    foreach (string image in imagePath)
+                    {
+                        {
+
+
+                            string command = "insert into m_product_images(ad_client_id,ad_org_id,createdby,updatedby,image_url,m_product_id) VALUES(" + _clientId + " ," + _OrgId + " ," + _UserID + "," + _UserID + ",'" + image + "'," + ProductSequenc_id + ")";
+                            NpgsqlCommand cmd_product_image = new NpgsqlCommand(command, connection);
+                            cmd_product_image.ExecuteNonQuery();
+                        }
+
+                    }
                     connection.Close();
                     connection.Open();
                     NpgsqlCommand INSERT_cmd_BomProduct_Detail = new NpgsqlCommand("insert into m_product_bom(m_product_bom_id,ad_client_id,ad_org_id,m_product_id,no_of_pcs,m_parent_product_id,is_sync)    " + " " + "" + "" +
-                                                                                                  "VALUES(" + Sequenc_id + "," + _clientId + " ," + _OrgId + " ," + ProductSequenc_id + "," + UOMId + "," + ProductSequenc_id + ",'0') ;", connection);
+                                                                                                  "VALUES(" + Sequenc_id + "," + _clientId + " ," + _OrgId + " ," + ProductSequenc_id + "," + 0 + "," + ProductSequenc_id + ",'0') ;", connection);
                     INSERT_cmd_BomProduct_Detail.ExecuteNonQuery();
 
                     connection.Close();
@@ -486,9 +499,22 @@ namespace Restaurant_Pos.Pages
 
                         connection.Open();
                         NpgsqlCommand INSERT_cmd_Product_Detail = new NpgsqlCommand("insert into m_product(id,ad_client_id,ad_org_id,m_product_id,Createdby,isactive, m_product_category_id, Name, barcode, uomid, uomname, image, sellonline, purchaseprice, Currentcostprice, max_qty, min_qty,PriceEditable,is_sync,m_terminal_id)    " + " " + "" + "" +
-                                                                                                      "VALUES(" + _productId + "," + _clientId + " ," + _OrgId + " ," + _productId + "," + _UserID + ",'Y','" + ItemId + "','" + txtName.Text + "','" + txtBarCode.Text + "','" + UOMId + "','" + UOMName + "','" + imagePath + "','" + SellOnline + "','" + txtPurchasePrice.Text + "','" + txtSalePrice.Text + "','" + txtMaximum.Text + "','" + txtMinimum.Text + "','" + PriceEditable + "','1','" + terminalID + "') ;", connection);
+                                                                                                      "VALUES(" + _productId + "," + _clientId + " ," + _OrgId + " ," + _productId + "," + _UserID + ",'Y','" + ItemId + "','" + txtName.Text + "','" + txtBarCode.Text + "','" + UOMId + "','" + UOMName + "','" + imagePath[0] + "','" + SellOnline + "','" + txtPurchasePrice.Text + "','" + txtSalePrice.Text + "','" + txtMaximum.Text + "','" + txtMinimum.Text + "','" + PriceEditable + "','1','" + terminalID + "') ;", connection);
                         INSERT_cmd_Product_Detail.ExecuteNonQuery();
-                    
+                        connection.Close();
+                        connection.Open();
+
+                        foreach (string image in imagePath)
+                        {
+                            {
+
+
+                                string command = "insert into m_product_images(ad_client_id,ad_org_id,createdby,updatedby,image_url,m_product_id) VALUES(" + _clientId + " ," + _OrgId + " ," + _UserID + "," + _UserID + ",'" + image + "'," + ProductSequenc_id + ")";
+                                NpgsqlCommand cmd_product_image = new NpgsqlCommand(command, connection);
+                                cmd_product_image.ExecuteNonQuery();
+                            }
+
+                        }
                         connection.Close();
                         connection.Open();
                         NpgsqlCommand INSERT_cmd_BomProduct_Detail = new NpgsqlCommand("insert into m_product_bom(m_product_bom_id,ad_client_id,ad_org_id,m_product_id,no_of_pcs,m_parent_product_id,is_sync)    " + " " + "" + "" +
@@ -563,7 +589,7 @@ namespace Restaurant_Pos.Pages
                     MessageBox.Show("Please Enter The Sale Price ! ");
                     return;
                 }
-                if (imagePath == "")
+                if (imagePath.Count == 0)
                 {
                     btnupload.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString(CoustomColors.CartRedBrush);
                     MessageBox.Show("Please Add the image ! ");
@@ -602,26 +628,35 @@ namespace Restaurant_Pos.Pages
         private void Btnupload_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == true)
-            {
+            {  //openFileDialog.se
                 Uri fileUri = new Uri(openFileDialog.FileName);
-                string fileName = openFileDialog.SafeFileName;
+                string[] filePaths = openFileDialog.FileNames;
 
                 string destinationPath = "C:/pos/component/Resources/Images/ProductImg";
                 string directoryPath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
-
+               
+        
                 DirectoryInfo diSource = new DirectoryInfo(directoryPath);
                 DirectoryInfo diTarget = new DirectoryInfo(@destinationPath);
-                Copy(diSource, diTarget, fileName.ToString());
+                foreach (string path in filePaths)
+                {
+                    var Filename = System.IO.Path.GetFileName(path);
+                    Copy(diSource, diTarget, Filename.ToString());
+                    imagePath.Add(diTarget.FullName + "/" + Filename);
+                }
+
 
                 product_image.Source = new BitmapImage(fileUri);
-                imagePath = diTarget.FullName + "/" + fileName;
-            
-             
-                        // Convert byte[] to Base64 String
-          //   string base64String = Convert.ToBase64String(directoryPath);
-                        
-               
+
+
+
+
+                // Convert byte[] to Base64 String
+                //   string base64String = Convert.ToBase64String(directoryPath);
+
+
             }
         }
         public static void Copy(DirectoryInfo source, DirectoryInfo target, string fileName)

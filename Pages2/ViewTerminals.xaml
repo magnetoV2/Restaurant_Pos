@@ -1,0 +1,121 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.ViewTerminals"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages"
+        xmlns:uc="clr-namespace:Restaurant_Pos.Pages.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewTerminals">
+    <Grid HorizontalAlignment="Left"  KeyUp="Grid_KeyUp" VerticalAlignment="Top">
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition/>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <uc:Header_Menu Grid.ColumnSpan="12" Grid.RowSpan="6" Margin="0,0,-580,0"></uc:Header_Menu>
+
+
+        <TextBlock Padding="7" Margin="0,0,10,15"   Grid.Column="1" Grid.Row="1" FontSize="21" FontFamily="times new roman" Grid.RowSpan="2" HorizontalAlignment="Right" Width="207">Terminals</TextBlock>
+        <StackPanel Grid.Column="2" Grid.Row="1"></StackPanel>
+        <Button Style="{StaticResource EditButton}" x:Name="btn_edit"  Background="Transparent" FontSize="15"   Grid.Column="10" Grid.Row="2" Margin="0,2,-60,0" Height="50" Width="Auto"   VerticalAlignment="Top" Click="Btn_edit_Click" Grid.RowSpan="2" Grid.ColumnSpan="2">Edit</Button>
+
+        <StackPanel Grid.Column="6" Grid.Row="1"></StackPanel>
+        <Button x:Name="btn_Add_Terminals" Style="{StaticResource AddButton}" Background="#FF0077CC" FontSize="15" Click="Btn_Add_Terminals_Click"  BorderThickness="0"  Height="Auto" Width="Auto"   Grid.Column="11" Margin="110,2,-205,40" Grid.Row="2" Grid.RowSpan="2">Add</Button>
+
+        <StackPanel Grid.Column="2" Grid.Row="5"></StackPanel>
+        <Button  x:Name="btn_Cancel"  Background="orange" FontSize="15" Style="{StaticResource CancelButton}"   BorderThickness="0" Width="Auto"  Grid.Column="10"  Grid.Row="4" Grid.ColumnSpan="2" Margin="10,220,-65,25" Click="Btn_Cancel_Click" Grid.RowSpan="2">Cancel</Button>
+
+        <StackPanel Grid.Column="6" Grid.Row="5"></StackPanel>
+        <Button x:Name="btn_Save" Style="{StaticResource SaveButton}" Grid.Column="11"  Grid.Row="4" Margin="120,220,-205,25" FontSize="15" Click="Btn_Save_Click"  BorderThickness="0" Width="Auto" Grid.RowSpan="2"  >Save</Button>
+
+        <TextBox  Grid.Column="1" Grid.Row="2"  Style="{StaticResource Regular_SearchTextBox}" Width="370"  x:Name="Terminals_Search" KeyUp="Terminals_Search_KeyUp" Tag="Search" TextAlignment="Center"   Margin="3,0,160,19" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+
+        <Border x:Name="Terminals_DropDown_br"
+                    CornerRadius ="25"
+                    Margin="40,30,0,0"
+                Height="45"
+                Width="363"
+                 HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="{StaticResource CartGrayBrush}"  Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <ComboBox x:Name="Terminals_DropDown"
+                      SelectionChanged="Terminals_DropDown_SelectionChanged"
+                       
+                      FontSize="20"
+                      BorderBrush="Gray"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                      Height="30"
+                     
+                       Background="White" RenderTransformOrigin="0.59,0.571" Margin="23,1,25,1">
+
+                <ComboBox.ItemTemplate >
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding id}" Visibility="Hidden"  />
+                            <TextBlock Text="{Binding Name}" ToolTip="{Binding id}" HorizontalAlignment="Left" FontSize="16" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Border>
+        <ListBox Grid.Column="1" Name="Terminals_ListBox"    Width="370" Background="White" SelectionChanged="Terminals_ListBox_SelectionChanged" BorderThickness="0" Margin="10,40,160,-105" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <ListBox.ItemTemplate>
+                <DataTemplate  >
+                    <StackPanel Orientation="Horizontal"  >
+                        <Label  Content="{Binding m_terminal_id}"  Margin="0,-10,0,0"  FontSize="18"  FontWeight="Light"     Width="100" Height="30" HorizontalAlignment="Left"/>
+                        <TextBlock  Text="{Binding name}" Margin="-95,35,0,0" FontSize="18" FontFamily="roboto"  Width="300" Height="20" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Margin="200,0,25,10"  Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="9">
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Name" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtName"  Style="{StaticResource Regular_TextBox}"   Margin="0" HorizontalAlignment="Left" Width="320"  />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Description" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtDescription"   Style="{StaticResource Regular_TextBox}" Margin="0"  HorizontalAlignment="Left" Width="320"  />
+            <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="IP Address" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtIPAddress"   Style="{StaticResource Regular_TextBox}"  Margin="0"  HorizontalAlignment="Left" Width="320"  />
+
+            <TextBox x:Name="txtTerminalsID" Visibility="Hidden"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+
+        </StackPanel>
+        <Image Grid.Column="1" Source="C:/pos/component/Resources/Images/Icons/left-arrow.png" HorizontalAlignment="Left" Height="30" Margin="0,3,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.771,0.381" Grid.Row="1" Grid.RowSpan="2"/>
+        <TextBox x:Name="LoginProcessingText"
+                 Style="{StaticResource Regular_TextBox_VaUp}"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                 Text="" FontSize="15" Height="24" Width="300" Grid.Column="11" Margin="40,0,-290,56" Grid.Row="4"  />
+
+    </Grid>
+</Page>

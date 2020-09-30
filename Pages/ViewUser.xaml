@@ -124,19 +124,19 @@
 
         <StackPanel Margin="50,40,-105,0" Grid.Column="3" Height="468" VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="10" Grid.Row="2">
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="QID" Margin="5,0,0,0"/>
-            <TextBox x:Name="txtQID"   Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="468"   Margin="5,0,0,0"  />
+            <TextBox x:Name="txtQID" TextChanged="txtQID_TextChanged"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="468"   Margin="5,0,0,0"  />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Name" Margin="5,0,0,0"/>
             <TextBox x:Name="txtName"    Style="{StaticResource Regular_TextBox}"  FontFamily="roboto" Width="468"   Margin="5,0,0,0" HorizontalAlignment="Left"  />
 
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="UserName" Margin="5,0,0,0"/>
-            <TextBox x:Name="txtUserName"  Style="{StaticResource Regular_TextBox}"   Margin="10,0,0,0"  />
+            <TextBox x:Name="txtUserName" TextChanged="txtUserName_TextChanged" Style="{StaticResource Regular_TextBox}"   Margin="10,0,0,0"  />
 
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Password" Margin="5,0,250,0"/>
             <TextBox x:Name="txtPassword"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0" />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="MobileNo" Margin="248,-120,10,0" Height="26"/>
-            <TextBox x:Name="txtMobile"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="225"   Margin="248,-50,0,0"    />
+            <TextBox x:Name="txtMobile" TextChanged="txtMobile_TextChanged"  Style="{StaticResource Regular_TextBox}"   HorizontalAlignment="Left" Width="225"   Margin="248,-50,0,0"    />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Email" Margin="4,0,230,0" Height="35"/>
-            <TextBox x:Name="txtEmail"  Style="{StaticResource Regular_TextBox}"    HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
+            <TextBox x:Name="txtEmail" TextChanged="TxtEmail_TextChanged" Style="{StaticResource Regular_TextBox}"    HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Role" Margin="273,-120,0,0" Height="35"  />
             <Border x:Name="Role_DropDown_br"
                     CornerRadius ="25"
@@ -175,7 +175,7 @@
             </Border>
 
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="Address" Margin="5,0,250,0"/>
-            <TextBox x:Name="txtAddress" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
+            <TextBox x:Name="txtAddress" TextChanged="txtAddress_TextChanged" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="218"   Margin="5,0,0,0"  />
             <Label  FontWeight="Light" FontFamily="times new roman" FontSize="18" Content="WareHouse" Margin="248,-120,0,0" Height="26"/>
             <Border x:Name="Warehouse_DropDown_br"
                     CornerRadius ="25"

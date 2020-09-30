@@ -227,6 +227,7 @@ namespace Restaurant_Pos
         public int id { get; set; }
         public string Name { get; set; }
         public string ImgPath { get; set; }
+        public string count { get; set; }
 
     }
   
@@ -594,6 +595,7 @@ namespace Restaurant_Pos
         public string documentNo { get; set; }
     }
 
+   
 
     //Api model end
     public class m_TakeAwayProductRS
@@ -626,7 +628,8 @@ namespace Restaurant_Pos
         {
             get
             {
-                return System.Math.Round(discountPer / 100 * (ItemCount * Price), 2);
+
+                return double.Parse(String.Format("{0:N}", (discountPer / 100 * (ItemCount * Price))));
             }
         }
 

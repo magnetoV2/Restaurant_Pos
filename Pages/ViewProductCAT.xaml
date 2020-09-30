@@ -109,7 +109,7 @@
             <Label Content="Search Key" FontWeight="Light" FontFamily="times new roman" FontSize="18" Margin="10,0,0,0"/>
             <TextBox x:Name="txtSearchKey"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="305" Margin="10,5,0,5"  />
             <Label Content="Name" FontWeight="Light" FontFamily="times new roman" FontSize="18"  Margin="10,0,0,0"/>
-            <TextBox x:Name="txtName"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="305" Margin="10,5,0,5"  />
+            <TextBox x:Name="txtName" TextChanged="txtName_TextChanged"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="305" Margin="10,5,0,5"  />
 
             <Label Content="Color Category" FontWeight="Light" FontFamily="times new roman" FontSize="18"  Margin="10,0,0,0"/>
             <TextBox x:Name="txtCategory"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}"  HorizontalAlignment="Left" Width="305" Margin="10,5,0,5" />

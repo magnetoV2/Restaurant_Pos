@@ -535,6 +535,11 @@ namespace Restaurant_Pos.Pages
                     MessageBox.Show("Please Enter The Email ! ");
                     return;
                 }
+                if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
+                {
+                    MessageBox.Show("Please Enter Valid Email ! ");
+                    return;
+                }
                 if (txtZipCode.Text == String.Empty)
                 {
                     txtZipCode.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString(CoustomColors.CartRedBrush);

@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Restaurant_Pos.Pages.UserControls.Header_Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Restaurant_Pos.Pages.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+
+    <Grid >
+     
+
+        <StackPanel Name="stMenu" HorizontalAlignment="Left" Height="60" Background="#FF0077CC" Margin="1,-30,-601,0" VerticalAlignment="Top" Grid.ColumnSpan="4" >
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Width="279" Height="55" HorizontalAlignment="Right" VerticalAlignment="Center"  Name="RtoS" Click="RtoS_Click" Margin="0,0,1121,0">
+                <StackPanel Margin="110,0,0,0" Orientation="Horizontal">
+                    <Image Source="C:/pos/component/Resources/Images/Icons/back.png"  Height="20" Width="50" />
+                    <TextBlock Text="Return to Sale" FontSize="17"  FontWeight="Bold" FontFamily="roboto" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-50,400,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/home.png" Height="20" Width="30" />
+
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-50,330,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/bike.png" Height="20" Width="30" />
+
+            </Button>
+            <Button Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-50,260,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/key.png"  Height="20" Width="30" />
+
+            </Button>
+            <Button  Style="{StaticResource MenuButton}"  Background="#FF0077CC" Margin="195,-50,190,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/cricle.png" Height="20" Width="30"  />
+
+            </Button>
+
+            <Button  Style="{StaticResource MenuButton}" Background="#FF0077CC" Margin="195,-50,120,0"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Image Source="C:/pos/component/Resources/Images/Icons/setting.png" Height="20" Width="30"  />
+
+            </Button>
+
+            <Button Style="{StaticResource MenuButton}" BorderBrush="#FF0077CC"  Click="Button_Click" Name="btnmenu"  Background="#FF0077CC" Margin="195,-50,60,0"  HorizontalAlignment="Right" VerticalAlignment="Center"   RenderTransformOrigin="0.68,-0.75">
+                <StackPanel>
+                    <Image Source="C:/pos/component/Resources/Images/Icons/menubar.png" Height="20" Width="30"  />
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+
+        <Popup Name="MenuPopup"
+                 Placement="Center"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Height="Auto" 
+                   VerticalOffset="-32"
+               HorizontalOffset="500"
+                   AllowsTransparency="True" Grid.Column="3">
+            <local:Menu  x:Name="ucMenu" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="649"></local:Menu>
+            <!--<local:Menu x:Name="ucMenu" HorizontalAlignment="Right" VerticalAlignment="Top"    Width="400" Height="649"   />-->
+
+        </Popup>
+
+    </Grid>
+</UserControl>
