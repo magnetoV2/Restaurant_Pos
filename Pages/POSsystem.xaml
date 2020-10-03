@@ -29,13 +29,14 @@
 
                 <ListBox Height="500" ScrollViewer.CanContentScroll="True" Background="#f5f5f5"   Name="Product_ListBox"  SelectionChanged="Product_ListBox_SelectionChanged" HorizontalAlignment="Left" BorderThickness="0"  >
                     <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
+                        <Style  TargetType="ListBoxItem">
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True" >
-                                    <Setter Property="FontWeight" Value="Bold" />
+                                    
                                     <Setter Property="Background" Value="Blue" />
                                   
                                 </Trigger>
+                                
                             </Style.Triggers>
                             <Style.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
@@ -44,9 +45,9 @@
                     </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border  CornerRadius="20" Height="150" Background="White" BorderThickness="1" >
-                                <StackPanel Orientation="Horizontal"  >                                   
-                                    <Ellipse Height="80" Width="80"  HorizontalAlignment="Center"  VerticalAlignment="Center" Stroke="LightGray" Margin="80,-40,0,0"   StrokeThickness="1">
+                            <Border  CornerRadius="20" Height="150" Background="White" BorderThickness="0,0,0,1" >
+                                <StackPanel  Orientation="Horizontal"  >                                   
+                                    <Ellipse Height="80" Width="80"  HorizontalAlignment="Center"  VerticalAlignment="Center" Stroke="LightGray" Margin="80,-40,0,0"  StrokeThickness="0">
                                         <Ellipse.Fill>
                                             <ImageBrush  ImageSource="{Binding ImgPath}"  />
                                         </Ellipse.Fill>
@@ -77,13 +78,13 @@
                     <Button BorderThickness="0" TabIndex="2" Style="{StaticResource MenuButton}" HorizontalAlignment="Right" Background="White" Foreground="Black"   BorderBrush="White" FontSize="20"  Height="45" x:Name="Order" Click="Order_Click"  Width="162"   Content="Order-Online"   />
 
                 </StackPanel>
-                <ListBox BorderThickness="1" Height="500" Background="White" HorizontalAlignment="Left" MinWidth="200"   SelectionChanged="ProductCat_ListBox_SelectionChanged"  Name="productCat_ListBox">
+                <ListBox BorderThickness="0" Height="500" Background="White" HorizontalAlignment="Left" MinWidth="200"   SelectionChanged="ProductCat_ListBox_SelectionChanged"  Name="productCat_ListBox">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True" >
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                    <Setter Property="Background" Value="Blue" />
+                                    
+                                    <Setter Property="Background"  Value="Blue" />
 
                                 </Trigger>
                             </Style.Triggers>
@@ -96,7 +97,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate >
                             <Border  CornerRadius="10"  Background="White"  BorderThickness="1" >
-                                <StackPanel Orientation="Horizontal" Height="60" Width="800" >
+                                <StackPanel Margin="0,0,0,10" Orientation="Horizontal" Height="60" Width="800" >
                                     <Border  CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Margin="10,10,10,10" >
                                         <Image  Source="{Binding ImgPath}" Height="40" Width="40"   />
                                     </Border>
@@ -190,14 +191,14 @@
                                 <StackPanel>
                                     <StackPanel Margin="10,10,10,10"  Orientation="Horizontal">
                                         <TextBlock  Width="110" Text="{Binding Name}"  FontSize="18" FontFamily="times new roman" HorizontalAlignment="Left"></TextBlock>
-                                        <TextBlock  Width="90" Text="{Binding Price, StringFormat=xQR {0}}"  FontSize="18"  FontFamily="times new roman" Margin="70,0,0,0" TextAlignment="Center"></TextBlock>
-                                        <TextBlock  Width="110" Text="{Binding TotalPrice, StringFormat=xQR {0}}" FontSize="18"  FontFamily="times new roman" Foreground="#FF0077CC" Margin="75,0,0,0"  TextAlignment="Right"></TextBlock>
+                                        <TextBlock  Width="90" Text="{Binding Price, StringFormat=xQR {0:N}}"  FontSize="18"  FontFamily="times new roman" Margin="70,0,0,0" TextAlignment="Center"></TextBlock>
+                                        <TextBlock  Width="110" Text="{Binding TotalPrice, StringFormat=xQR {0:N}}" FontSize="18"  FontFamily="times new roman" Foreground="#FF0077CC" Margin="75,0,0,0"  TextAlignment="Right"></TextBlock>
                                     </StackPanel>
                                     <StackPanel  Orientation="Horizontal">
                                         <CheckBox ToolTip="{Binding Name}" Click="CheckBox_Click"  Visibility="{Binding checkbox}"></CheckBox>
                                     <Button   Name="btnPer" ToolTip="{Binding Name}" Click="BtnPer_Click"  Margin="10,10,40,10" Padding="0,5" Background="Orange" Height="30" Width="70"  VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <Button.Content>
-                                            <TextBlock Text="{Binding discountAmt, StringFormat=QR {0}}"/>
+                                            <TextBlock Text="{Binding discountAmt, StringFormat=QR {0:N}}"/>
                                         </Button.Content>
                                     </Button>
                                     <Button Name="btnNotesEdit" ToolTip="{Binding Name}" Click="BtnNotesEdit_Click" Margin="90,10,10,10" Padding="0,5" Background="Gray" Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Center">

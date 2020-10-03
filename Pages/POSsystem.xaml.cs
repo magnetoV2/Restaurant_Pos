@@ -62,7 +62,7 @@ namespace Restaurant_Pos.Pages
         double payableAmount = 0;
         double paidCash = 0;
         bool totalDiscountApplied = false;
-        float totalAmount = 0;
+        double totalAmount = 0;
         string OrderCancelreason = null;
         //int invoiceno = 0;
         int Product_ListBoxSelect = 0;
@@ -1727,7 +1727,9 @@ namespace Restaurant_Pos.Pages
                 //{
                 //    TxtTotalDiscountPer_Click(sender, e);
                 //}
-                if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                var key = (e.Key == Key.System ? e.SystemKey : e.Key);
+                if (key == Key.D && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+                   // if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
                     
                     MyPopupTotalDisc.IsOpen = true;
@@ -1779,13 +1781,16 @@ namespace Restaurant_Pos.Pages
                 if (e.Key.ToString().ToUpper() == "F6")
                 {
                     txtCatSearch.Focus();
-                }               
-                if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                }
+                
+                if (key == Key.S && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+                 //   if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
 
                     Split1_Click(sender, e);
                 }
-                if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                if (key == Key.T && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+                   // if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
                 {
 
                     MyPopupTotalDisc.IsOpen = true;

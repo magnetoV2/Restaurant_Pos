@@ -42,6 +42,8 @@ namespace Restaurant_Pos.Pages
         public orderonline()
         {
             InitializeComponent();
+            double height = SystemParameters.PrimaryScreenHeight - 250;
+            Order_ListBox.Height = height;
             OrderDetail();
         }
         public void OrderDetail()

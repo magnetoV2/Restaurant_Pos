@@ -897,7 +897,14 @@ namespace Restaurant_Pos.Pages
                         int Terminal_SelectedItemIndex = _m_Terminals_items.FindIndex(i => i.id == int.Parse(dtlist.Rows[0]["id"].ToString()));
                         terminal_DropDown.SelectedIndex = Terminal_SelectedItemIndex;
                         txtProductID.Text = id.ToString();
-                        editimage.Source = new BitmapImage(new Uri(dtlist.Rows[0]["image"].ToString(), UriKind.Relative));
+                        // Uri x = new Uri((dtlist.Rows[0]["image"].ToString(), UriKind.Absolute));
+                        try
+                        {
+                            editimage.Source = dtlist.Rows[0]["image"].ToString() != null ? (ImageSource)new ImageSourceConverter().ConvertFromString(dtlist.Rows[0]["image"].ToString()) : null;
+
+                        }
+                        catch { }
+
                     }
                     else
                     {

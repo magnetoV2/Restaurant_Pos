@@ -57,11 +57,15 @@ namespace Restaurant_Pos
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.I && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+            var key = (e.Key == Key.System ? e.SystemKey : e.Key);
+
+            if (key == Key.I && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+            // if (e.Key == Key.I && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
             {
                 MainFrame.Navigate(new DineIn());
             }
-            if (e.Key == Key.O && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+            if (key == Key.O && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+                //if (e.Key == Key.O && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
             {
 
                 MainFrame.Navigate(new orderonline());

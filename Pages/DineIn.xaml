@@ -26,9 +26,9 @@
                 <RowDefinition Height="150"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Background="White" HorizontalAlignment="Left" Margin="0,20,0,0"  Height="80" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top" >
-                <Button BorderThickness="0" TabIndex="0"  Style="{StaticResource MenuButton}" Background="White" HorizontalAlignment="Left"  Foreground="Black" BorderBrush="White" FontSize="20"   Click="Button_Click"  Height="45" Margin="40,20,0,0" Width="168" Content="Take Away"/>
-                <Button BorderThickness="0" TabIndex="1"  HorizontalAlignment="Center" Background="#2c3e50" Foreground="White"  BorderBrush="White" FontSize="20" Height="45" x:Name="DineIn1"    Width="181"   Content="Dine-In" Margin="342,-45,312,0" RenderTransformOrigin="0.508,2.206"   />
-                <Button BorderThickness="0" TabIndex="2" Style="{StaticResource MenuButton}" HorizontalAlignment="Right" Background="White" Foreground="Black"   BorderBrush="White" FontSize="20"  Height="45" x:Name="Order" Click="Order_Click"  Width="162"   Margin="0,-45,10,0" Content="Order-Online"   />
+                <Button BorderThickness="0" TabIndex="0"  Style="{StaticResource MenuButton}" Background="White" HorizontalAlignment="Left"  Foreground="Black" BorderBrush="White" FontSize="20"   Click="Button_Click"  Height="45" Margin="40,20,0,0" Width="160" Content="Take Away"/>
+                <Button BorderThickness="0" TabIndex="1"  HorizontalAlignment="Center" Background="#2c3e50" Foreground="White"  BorderBrush="White" FontSize="20" Height="45" x:Name="DineIn1"    Width="160"   Content="Dine-In" Margin="342,-45,312,0" RenderTransformOrigin="0.508,2.206"   />
+                <Button BorderThickness="0" TabIndex="2" Style="{StaticResource MenuButton}" HorizontalAlignment="Right" Background="White" Foreground="Black"   BorderBrush="White" FontSize="20"  Height="45" x:Name="Order" Click="Order_Click"  Width="160"   Margin="0,-45,10,10" Content="Order-Online"   />
 
             </StackPanel>
             <StackPanel Background="#f5f5f5"   Orientation="Horizontal" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="2">
@@ -40,19 +40,6 @@
                             <WrapPanel IsItemsHost="True" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True" >
-                                    <Setter Property="FontWeight" Value="Bold" />
-
-                                </Trigger>
-                            </Style.Triggers>
-                            <Style.Resources>
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
-                            </Style.Resources>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -147,14 +134,14 @@
                             <StackPanel>
                                 <StackPanel Margin="10,10,10,10"  Orientation="Horizontal">
                                     <TextBlock  Width="110" Text="{Binding Name}"  FontSize="18" FontFamily="times new roman" HorizontalAlignment="Left"></TextBlock>
-                                    <TextBlock  Width="90" Text="{Binding Price, StringFormat=xQR {0}}"  FontSize="18"  FontFamily="times new roman" Margin="70,0,0,0" TextAlignment="Center"></TextBlock>
-                                    <TextBlock  Width="110" Text="{Binding TotalPrice, StringFormat=xQR {0}}" FontSize="18"  FontFamily="times new roman" Foreground="#FF0077CC" Margin="75,0,0,0"  TextAlignment="Right"></TextBlock>
+                                    <TextBlock  Width="90" Text="{Binding Price, StringFormat=xQR {0:N}}"  FontSize="18"  FontFamily="times new roman" Margin="70,0,0,0" TextAlignment="Center"></TextBlock>
+                                    <TextBlock  Width="110" Text="{Binding TotalPrice, StringFormat=xQR {0:N}}" FontSize="18"  FontFamily="times new roman" Foreground="#FF0077CC" Margin="75,0,0,0"  TextAlignment="Right"></TextBlock>
                                 </StackPanel>
                                 <StackPanel  Orientation="Horizontal">
                                     <CheckBox ToolTip="{Binding Name}" Click="CheckBox_Click"  Visibility="{Binding checkbox}"></CheckBox>
                                     <Button   Name="btnPer" ToolTip="{Binding Name}" Click="BtnPer_Click"  Margin="10,10,40,10" Padding="0,5" Background="Orange" Height="30" Width="70"  VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <Button.Content>
-                                            <TextBlock Text="{Binding discountAmt, StringFormat=QR {0}}"/>
+                                            <TextBlock Text="{Binding discountAmt, StringFormat=QR {0:N}}"/>
                                         </Button.Content>
                                     </Button>
                                     <Button Name="btnNotesEdit" ToolTip="{Binding Name}" Click="BtnNotesEdit_Click" Margin="90,10,10,10" Padding="0,5" Background="Gray" Height="30" Width="30" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -242,7 +229,7 @@
                         <Style TargetType="ListBoxItem">
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True" >
-                                    <Setter Property="FontWeight" Value="Bold" />
+                                   
                                     <Setter Property="Background" Value="Blue" />
 
                                 </Trigger>

@@ -134,9 +134,17 @@ namespace Restaurant_Pos.Pages
 
         private void GridPopupCreateNewSession_KeyUp(object sender, KeyEventArgs e)
         {
+            int ascii = e.Key.ToString().ToUpper()[0];
+            
             if (e.Key.ToString().ToUpper() == "F4")
             {
                 BtnStart_Click(sender, e);
+            }
+            else if(ascii>65 && ascii<90)
+            {
+              
+                txtopeningbalance.Text = "0";
+                txtopeningbalance.SelectionStart = 1;
             }
             else if((e.Key.Equals(Key.Back) || e.Key.Equals(Key.Delete)) && txtopeningbalance.Text.Length == 0)
             {

@@ -1,30 +1,17 @@
 ﻿
 using log4net;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Npgsql;
-using Restaurant_Pos.Mail;
 
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Text;
 using System.Data;
 using Restaurant_Pos.ViewModels.Page;
 using CrystalDecisions.CrystalReports.Engine;
-using System.Runtime.InteropServices;
-using CrystalDecisions.CrystalReports;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.ReportSource;
 
 
 namespace Restaurant_Pos.Pages
@@ -69,7 +56,7 @@ namespace Restaurant_Pos.Pages
         public string selectItemForLineDiscount = null;
         double payableAmount = 0;
         bool totalDiscountApplied = false;
-        float totalAmount = 0;
+        double totalAmount = 0;
         string OrderCancelreason = null;
         int selectedTable = 0;
         int? invoiceno = null;
@@ -86,7 +73,7 @@ namespace Restaurant_Pos.Pages
         {
             InitializeComponent();
             BindTakeAwayProductCAT();
-            
+
             calculateSum();
             getTables();
             CustomersList();
@@ -1373,7 +1360,7 @@ namespace Restaurant_Pos.Pages
                     }
                 }
 
-                catch 
+                catch
                 {
 
                 }
@@ -1496,12 +1483,12 @@ namespace Restaurant_Pos.Pages
                         MessageBox.Show("Kot is  generated !!");
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Kot is Not generated !!");
-              
+
             }
 
         }
@@ -1714,11 +1701,9 @@ namespace Restaurant_Pos.Pages
 
                         paymentPopup.IsOpen = true;
                         TotalAmt.Content = "QR " + String.Format("{0:N}", totalAmount);
-
-                        double PayAmt = payableAmount;
-                        PayableAmt.Content = "QR " + String.Format("{0:N}", totalAmount - payableAmount);
-                        BalanceAmt.Content = "QR " + String.Format("{0:N}", totalAmount - payableAmount);
-                        txtBal.Text = "QR " + String.Format("{0:N}", totalAmount - payableAmount);
+                        PayableAmt.Content = "QR " + String.Format("{0:N}", payableAmount);
+                        BalanceAmt.Content = "QR " + String.Format("{0:N}", payableAmount);
+                        txtBal.Text = "QR " + String.Format("{0:N}", payableAmount);
                     }
 
                     else
@@ -1732,17 +1717,22 @@ namespace Restaurant_Pos.Pages
                     lblItemName.Content = "items";
 
                 }
-                if (e.Key == Key.T && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                var key = (e.Key == Key.System ? e.SystemKey : e.Key);
+                if (key == Key.T && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+
+
                 {
                     TxtTotalDiscountPer_Click(sender, e);
                 }
-                if (e.Key == Key.D && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                if (key == Key.D && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
+
+
                 {
                     MyPopupLineDisc.IsOpen = true;
 
-                   
+
                     lblitemName.Content = selectItemForLineDiscount;
-                   
+
                 }
                 if (e.Key.ToString().ToUpper() == "F3")
                 {
@@ -1757,7 +1747,7 @@ namespace Restaurant_Pos.Pages
                     if (lblInvoiceNo.Content == null || lblInvoiceNo.Content.ToString() == "")
 
                     {
-                       
+
                         m_TakeAwayProductRS SelectedItem = _m_TakeAwayProductRS.Find(i => i.Name == selectedItemForEditNotes);
                         int SelectedItemIndex = _m_TakeAwayProductRS.FindIndex(i => i.Name == selectedItemForEditNotes);
                         _m_TakeAwayProductRS.RemoveAt(SelectedItemIndex);
@@ -1790,7 +1780,7 @@ namespace Restaurant_Pos.Pages
                 {
                     txtCatSearch.Focus();
                 }
-                if (e.Key == Key.S && (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt)))
+                if (key == Key.S && (Keyboard.Modifiers & (ModifierKeys.Alt)) == (ModifierKeys.Alt))
                 {
 
                     Split1_Click(sender, e);
@@ -1965,8 +1955,8 @@ namespace Restaurant_Pos.Pages
 
         }
 
-       
 
-       
+
+
     }
 }
